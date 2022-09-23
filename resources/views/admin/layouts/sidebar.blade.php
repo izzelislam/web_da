@@ -3,19 +3,19 @@
     'Registrant' => [
       'title' => 'Pendaftar',
       'name'  => 'registrant',
-      'link'  => '#',
+      'link'  => '/admin/users',
       'icon'  => 'fa fa-graduation-cap'
     ],
     'SchoolYear' => [
       'title' => 'Tahun Ajaran',
       'name'  => 'school-year',
-      'link'  => '#',
+      'link'  => '/admin/school-year',
       'icon'  => 'fa fa-book'
     ],
     'Unit' => [
       'title' => 'Unit',
       'name'  => 'unit',
-      'link'  => '#',
+      'link'  => '/admin/unit',
       'icon'  => 'fa fa-school'
     ]
   ];
@@ -24,7 +24,7 @@
     'Category' => [
       'title' => 'Category',
       'name'  => 'category',
-      'link'  => '#',
+      'link'  => '/admin/article-category',
       'icon'  => 'fa fa-leaf'
     ],
     'Article' => [
@@ -41,18 +41,18 @@
       'child' => [
         [
           'title' => 'Galery',
-          'link'  => '#'
+          'link'  => '/admin/galery'
         ],
         [
           'title' => 'Video',
-          'link'  => '#'
+          'link'  => '/admin/video'
         ]
       ]
     ],
     'Slider' => [
       'title' => 'Slider',
       'name'  => 'slider',
-      'link'  => '#',
+      'link'  => '/admin/slider',
       'icon'  => 'fa fa-image'
     ]
   ];
@@ -91,7 +91,7 @@
           @foreach ($value as $key => $item)
             @if (empty($item['child']))
               <li class="nav-item">
-                <a class="nav-link" href="orders.html">
+                <a class="nav-link" href="{{ $item['link'] }}">
                   <span class="nav-icon">
                     <i class="{{ $item['icon'] }}"></i>
                   </span>

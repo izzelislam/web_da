@@ -10,6 +10,9 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.10",
+        "power-components/livewire-powergrid": "^3.3",
+        "rappasoft/laravel-livewire-tables": "^2.8",
         "yaza/laravel-repository-service": "^3.2"
     },
     "require-dev": {
@@ -26,7 +29,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "file": [
+            "app/Helper/helper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

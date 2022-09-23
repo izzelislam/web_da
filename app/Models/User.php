@@ -18,9 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'unit_id',
+        'school_year_id',
         'name',
         'email',
-        'password',
+        'phone_number',
+        'image',
+        'password'
     ];
 
     /**
@@ -41,4 +45,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
+
+    public function doc()
+    {
+        return $this->hasOne(Doc::class);
+    }
+
+    public function father()
+    {
+        return $this->hasOne(Father::class);
+    }
+
+    public function mother()
+    {
+        return $this->hasOne(Mother::class);
+    }
+
+    public function biodata()
+    {
+        return $this->hasOne(Biodata::class);
+    }
+
+    public function schoolYear()
+    {
+        return $this->belongsTo(SchoolYear::class);
+    }
 }
