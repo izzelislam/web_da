@@ -11,7 +11,7 @@
 				
 				<!-- Home Slider Item -->
 				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(http://mtsidaarulatqiyaa.com/wp-content/uploads/2019/03/WhatsApp-Image-2018-10-31-at-10.15.45.jpeg)"></div>
+					<div class="home_slider_background" style="background-image:url({{ asset('images/component/slider_1.jpeg') }})"></div>
 					<div class="overlay"></div>
 					<div class="home_slider_content">
 						<div class="container">

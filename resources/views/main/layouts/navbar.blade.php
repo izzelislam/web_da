@@ -36,7 +36,7 @@
           <div class="header_content d-flex flex-row align-items-center justify-content-start">
             <div class="logo_container">
               <a href="#">
-                <img class="logo" src="http://mtsidaarulatqiyaa.com/wp-content/uploads/2018/03/Revisi-Logo-PONDOK-768x768.png" alt="logo"> <span class="btn side-logo">Daarul Atqiyaa'</span>
+                <img class="logo" src="{{ asset('images/component/logo.png') }}" alt="logo"> <span class="btn side-logo">Daarul Atqiyaa'</span>
                 <!-- <div class="logo_text">Unic<span>at</span></div> -->
               </a>
             </div>
