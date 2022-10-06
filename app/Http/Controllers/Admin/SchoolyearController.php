@@ -46,10 +46,10 @@ class SchoolyearController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
-        ], [
-            'name.required' => 'nama wajib di isi'
+            'year' => 'required',
         ]);
+
+        $request['status'] = 1;
 
         $this->model->create($request->all());
 

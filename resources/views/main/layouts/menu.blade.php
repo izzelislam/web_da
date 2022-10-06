@@ -15,7 +15,16 @@
       <li class="menu_mm"><a href="#">Courses</a></li>
       <li class="menu_mm"><a href="#">Blog</a></li>
       <li class="menu_mm"><a href="#">Page</a></li>
-      <li class="menu_mm"><a href="contact.html">Contact</a></li>
+      @auth
+        <li>
+          <a href="{{ route("frontpage.dashboard") }}" class="btn background-dark text-white ml-4">Dashboard</a>
+        </li>
+      @endauth
+      @guest
+        <li>
+          <a href="{{ route("login.index") }}" class="btn background-dark text-white ml-4">Masuk</a>
+        </li>
+      @endguest
     </ul>
   </nav>
 </div>

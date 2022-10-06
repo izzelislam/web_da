@@ -87,12 +87,11 @@ final class SchoolYearTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('year')
-
-           /** Example of custom column using a closure **/
+            /** Example of custom column using a closure **/
             ->addColumn('year_lower', function (SchoolYear $model) {
                 return strtolower(e($model->year));
             })
-
+            ->addColumn('present')
             ->addColumn('status')
             ->addColumn('created_at_formatted', fn (SchoolYear $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
             ->addColumn('updated_at_formatted', fn (SchoolYear $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
@@ -133,6 +132,9 @@ final class SchoolYearTable extends PowerGridComponent
                 ->makeInputText(),
 
             Column::make('STATUS', 'status')
+                ->toggleable(),
+
+            Column::make('TAMPILKAN', 'present')
                 ->toggleable(),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')

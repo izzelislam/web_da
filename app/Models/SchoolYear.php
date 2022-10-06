@@ -9,7 +9,11 @@ class SchoolYear extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['year', 'status'];
+    protected $fillable = ['year', 'status', 'present'];
+
+    protected $casts = [
+        'status' => 'boolean',
+    ];
 
     public function users()
     {

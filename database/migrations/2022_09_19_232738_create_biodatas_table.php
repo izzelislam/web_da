@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('brth_date');
             $table->string('brth_place');
+            $table->string('brothers');
             $table->string('order_of_birth');
             $table->string('language');
             $table->string('address');
@@ -35,6 +36,7 @@ return new class extends Migration
             $table->string('disease_present');
             $table->string('disease_once');
             $table->string('prev_school');
+            $table->string('blood');
             $table->string('moved_school')->nullable();
             $table->string('learn_duration')->nullable();
             $table->string('accepted_at')->nullable();

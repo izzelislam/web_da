@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('year');
             $table->boolean('status');
+            $table->boolean('present')->default(0);
             $table->timestamps();
         });
     }

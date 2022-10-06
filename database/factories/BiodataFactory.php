@@ -41,6 +41,8 @@ class BiodataFactory extends Factory
             'learn_duration'    => rand(1,3),
             'accepted_at'       => $this->faker->date('d/m/Y'),
             'moved_reason'      => $this->faker->sentence(10),
+            'brothers'          => rand(1, 12),
+            'blood'             => $this->faker->randomElement(['A', 'AB', 'B', 'O']),
         ];
     }
 }

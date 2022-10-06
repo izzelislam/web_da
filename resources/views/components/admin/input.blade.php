@@ -6,7 +6,7 @@
     type="{{ $type }}" 
     name="{{ $name }}"
     class="form-control  
-      @error('name')
+      @error($name)
         is-invalid
       @enderror" 
     id="setting-input-2" 

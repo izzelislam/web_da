@@ -20,7 +20,6 @@ class DocFactory extends Factory
             'user_id'       => rand(1, 200),
             'akta'          => '/dumy/akta.jpg', 
             'ijazah'        => '/dumy/kelulusan.jpg', 
-            'payment'       => '/dumy/transfer.jpg', 
             'family_card'   => '/dumy/kk.jpg'
         ];
     }

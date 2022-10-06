@@ -47,11 +47,19 @@
                 <li><a href="courses.html">Galeri</a></li>
                 <li><a href="blog.html">Profil</a></li>
                 <li><a href="#">Program</a></li>
-                <!-- <li><a href="contact.html">Contact</a></li> -->
+                @auth
+                  <li>
+                    <a href="{{ route("frontpage.dashboard") }}" class="btn background-dark text-white ml-4">Dashboard</a>
+                  </li>
+                @endauth
+                @guest
+                  <li>
+                    <a href="{{ route("login.index") }}" class="btn background-dark text-white ml-4">Masuk</a>
+                  </li>
+                @endguest
               </ul>
 
               <!-- <div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div> -->
-              <button class="btn background-dark text-white ml-4">Masuk</button>
               <!-- Hamburger -->
 
               <!-- <div class="shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div> -->

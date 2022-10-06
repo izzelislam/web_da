@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doc;
 use App\Models\SchoolYear;
 use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
 {
@@ -37,7 +39,7 @@ class UserController extends Controller
     public function show($id)
     {
         $data['title']          = $this->page_title;
-        $data['model'] =  $this->model->where('id', $id)->with('biodata', 'father', 'mother', 'doc', 'unit', 'schoolYear')->first();
+        $data['model'] =  $this->model->where('id', $id)->with('biodata', 'father', 'mother', 'doc', 'unit', 'schoolYear', 'payment')->first();
 
         // dd($data['model']->toArray());
 
@@ -88,5 +90,12 @@ class UserController extends Controller
         $data->delete();
 
         return redirect()->route($this->route.'index')->with('success', 'Berhasil hapus data');
+    }
+
+    public function downloadDoc($id , $type)
+    {
+        $doc = collect(Doc::find($id));
+        $filepath = public_path($doc[$type]);
+        return Response::download($filepath); 
     }
 }

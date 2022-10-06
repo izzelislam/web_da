@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('akta');
             $table->string('ijazah');
-            $table->string('payment');
             $table->string('family_card');
             $table->timestamps();
         });

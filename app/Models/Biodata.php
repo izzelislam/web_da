@@ -34,6 +34,8 @@ class Biodata extends Model
         'learn_duration',
         'accepted_at',
         'moved_reason',
+        'brothers',
+        'blood'
     ];
 
     public function user()

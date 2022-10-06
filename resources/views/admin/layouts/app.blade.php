@@ -2,10 +2,10 @@
 <html lang="en"> 
 <head>
     @include('admin.layouts.style')
-    @method('addon-style')
     <style>
-        [x-cloak] { display: none !important; }
+      [x-cloak] { display: none !important; }
     </style>
+    @stack('addon-style')
     @livewireStyles
     @powerGridStyles
 </head> 
@@ -25,9 +25,8 @@
     </div>    					
 
     @include('admin.layouts.script')
-    @stack('addon-script')
-
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    @stack('addon-script')
 
     @livewireScripts
     @powerGridScripts

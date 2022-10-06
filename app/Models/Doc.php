@@ -13,7 +13,6 @@ class Doc extends Model
         'user_id',
         'akta', 
         'ijazah', 
-        'payment', 
         'family_card'
     ];
 

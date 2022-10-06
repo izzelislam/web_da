@@ -51,9 +51,13 @@ final class UserTable extends PowerGridComponent
     public function datasource(): Builder
     {
         $users = User::query();
-        $users->with('schoolYear')->whereHas('schoolYear', function($query){
-            $query->where('year', date('Y'));
-        });
+        $users->with('schoolYear');
+
+        if (empty(request('school_year'))){
+            $users->whereHas('schoolYear', function($query){
+                $query->where('status', 1);
+            });
+        }
 
         if (!empty(request('unit'))){
             $users->whereHas('unit', function($query){
@@ -66,6 +70,8 @@ final class UserTable extends PowerGridComponent
                 $query->where('year', request('school_year'));
             });
         }
+
+        $users->orderBy('created_at', 'desc');
 
         return $users;
     }

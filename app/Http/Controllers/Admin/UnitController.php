@@ -23,6 +23,10 @@ class UnitController extends Controller
 
     public function index()
     {
+        // $cek = auth()->guard('web')->check();
+        
+        // dd($cek);
+
         $data['title']          = $this->page_title;
         $data['create_route']   = route($this->route.'create');
         return view($this->view.'index', $data);

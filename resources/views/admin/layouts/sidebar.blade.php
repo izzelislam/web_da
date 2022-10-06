@@ -30,7 +30,7 @@
     'Article' => [
       'title' => 'Article',
       'name'  => 'article',
-      'link'  => '#',
+      'link'  => '/admin/article',
       'icon'  => 'fa fa-file'
     ],
     'Media' => [
@@ -61,7 +61,7 @@
     'User' => [
       'title' => 'User',
       'name'  => 'User',
-      'link'  => '#',
+      'link'  => '/admin/admin-user',
       'icon'  => 'fa fa-user-secret'
     ],
     'Setting' => [
