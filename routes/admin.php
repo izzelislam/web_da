@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ArticleCategoryController;
 use App\Http\Controllers\Admin\ArticleController;
-use App\Http\Controllers\admin\GaleryController;
+use App\Http\Controllers\Admin\GaleryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PaymentController;
-use App\Http\Controllers\admin\SchoolyearController;
-use App\Http\Controllers\admin\SliderController;
-use App\Http\Controllers\admin\UnitController;
-use App\Http\Controllers\admin\UserController;
-use App\Http\Controllers\admin\VideoController;
+use App\Http\Controllers\Admin\SchoolyearController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\UnitController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use OpenSpout\Common\Entity\Row;
 
 Route::get('/admin', function(){
