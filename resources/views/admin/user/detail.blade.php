@@ -19,6 +19,8 @@
         <div class="mb-2"><strong>No Hp:</strong> {{ $model->phone_number ?? '' }}</div>
         <div class="mb-2"><strong>Tanggal Daftar:</strong> {{ $model->created_at->format('d/m/Y') ?? '' }}</div>
         <div class="mb-2"><strong>Unit:</strong> {{ $model->unit->name ?? '' }}</div>
+        <div class="mb-2"><strong>Kode Pendaftaran:</strong> {{ $model->code ?? '' }}</div>
+        <div class="mb-2"><strong>Jenis Kelamin:</strong> {{ $model->gender ?? '' }}</div>
       </div>
       <div class="col">
         <img src="{{ asset($model->image) ?? '' }}" alt="foto_profil" width="150px">
@@ -159,14 +161,14 @@
             <tr>
               <td>Surat kelulusan</td>
               <td>
-                <img src="{{ asset($model->doc->ijazah) }}" width="100" alt="">
+                <embed src="{{ asset($model->doc->ijazah) }}" width="150" type="">
               </td>
               <td>
                 <a href="{{ route("download-doc", ['id' => $model->doc->id, 'type' => 'ijazah']) }}" class="btn btn-primary text-white">
                   <i class="fa fa-download me-2"></i>
                   Download
                 </a>
-                <a href="{{ $model->doc->ijazah }}" target="blank" class="btn btn-info text-white">
+                <a href="{{ asset($model->doc->ijazah) }}" target="blank" class="btn btn-info text-white">
                   <i class="fa fa-eye me-2"></i>
                   lihat
                 </a>
@@ -175,14 +177,14 @@
             <tr>
               <td>Kartu Keluarga</td>
               <td>
-                <img src="{{ asset($model->doc->family_card) }}" width="100" alt="">
+                <embed src="{{ asset($model->doc->family_card) }}" width="150" type="">
               </td>
               <td>
                 <a href="{{ route("download-doc", ['id' => $model->doc->id, 'type' => 'family_card']) }}" class="btn btn-primary text-white">
                   <i class="fa fa-download me-2"></i>
                   Download
                 </a>
-                <a href="{{ $model->doc->family_card }}" target="blank" class="btn btn-info text-white">
+                <a href="{{ asset($model->doc->family_card )}}" target="blank" class="btn btn-info text-white">
                   <i class="fa fa-eye me-2"></i>
                   lihat
                 </a>
@@ -191,14 +193,14 @@
             <tr>
               <td>Akta Kelahiran</td>
               <td>
-                <img src="{{ asset($model->doc->akta) }}" width="100" alt="">
+                <embed src="{{ asset($model->doc->akta) }}" width="150" type="">
               </td>
               <td>
                 <a href="{{ route("download-doc", ['id' => $model->doc->id, 'type' => 'akta']) }}" class="btn btn-primary text-white">
                   <i class="fa fa-download me-2"></i>
                   Download
                 </a>
-                <a href="{{ $model->doc->akta }}" target="blank" class="btn btn-info text-white">
+                <a href="{{ asset($model->doc->akta) }}" target="blank" class="btn btn-info text-white">
                   <i class="fa fa-eye me-2"></i>
                   lihat
                 </a>

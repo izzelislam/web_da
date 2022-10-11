@@ -26,6 +26,8 @@ class UserFactory extends Factory
             'image'             => '/dumy/avatar.jpg',
             'password'           => bcrypt('secret'),
             'remember_token' => Str::random(10),
+            'code'          => CodeGenerator(16),
+            'gender'    => $this->faker->randomElement(['laki-laki', 'perempuan'])
         ];
     }
 

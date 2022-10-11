@@ -6,6 +6,12 @@
       'link'  => '/admin/users',
       'icon'  => 'fa fa-graduation-cap'
     ],
+    'Account' => [
+      'title' => 'Akun',
+      'name'  => 'account',
+      'link'  => '/admin/account',
+      'icon'  => 'fa fa-key'
+    ],
     'SchoolYear' => [
       'title' => 'Tahun Ajaran',
       'name'  => 'school-year',
@@ -54,6 +60,12 @@
       'name'  => 'slider',
       'link'  => '/admin/slider',
       'icon'  => 'fa fa-image'
+],
+'Flayer' => [
+      'title' => 'Flayer',
+      'name'  => 'flayer',
+      'link'  => '/admin/flayer',
+      'icon'  => 'fa fa-paw'
     ]
   ];
 
@@ -67,7 +79,7 @@
     'Setting' => [
       'title' => 'Setting',
       'name'  => 'setting',
-      'link'  => '#',
+      'link'  => '/admin/setting',
       'icon'  => 'fa fa-gear'
     ],
   ];
@@ -86,6 +98,14 @@
     
     <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
       <ul class="app-menu list-unstyled accordion" id="menu-accordion">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/dashboard">
+            <span class="nav-icon">
+              <i class="fa fa-home"></i>
+            </span>
+            <span class="nav-link-text">Home</span>
+          </a>
+        </li>
         @foreach ($menus as $index => $value)
           <div class="px-3 fw-bold pt-4">{{ $index }}</div>
           @foreach ($value as $key => $item)

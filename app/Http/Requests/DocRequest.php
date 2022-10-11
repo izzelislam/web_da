@@ -24,7 +24,21 @@ class DocRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'akta' => 'required|mimes:pdf,pdf|max:10000', 
+            'ijazah' => 'required|mimes:pdf,pdf|max:10000', 
+            'family_card' => 'required|mimes:pdf,pdf|max:10000'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'akta.required' => 'akta wajib diisi', 
+            'akta.mimes' => 'akta harus berformat pdf', 
+            'ijazah.required' => 'Tanda kelulusan wajib diisi', 
+            'ijazah.mimes' => 'Tanda kelulusan harus berformat pdf', 
+            'family_card.required' => 'Kartu keluarga wajib diisi', 
+            'family_card.mimes' => 'Kartu keluarga harus berformat pdf', 
         ];
     }
 }

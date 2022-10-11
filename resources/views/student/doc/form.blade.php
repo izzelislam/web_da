@@ -10,7 +10,7 @@
 @section('content')
 <div class="row">
   <x-admin.card md="8" lg="8">
-    <form class="settings-form" method="POST" action="{{ $route }}">
+    <form class="settings-form" method="POST" action="{{ $route }}" enctype="multipart/form-data">
       @csrf
       @isset($model)
         @method('PUT')
@@ -37,51 +37,40 @@
         value="{{ $model->family_card ?? '' }}"
       />
 
-      <x-admin.input
-        label="Bukti Pembayaran"
-        name="payment"
-        type="file"
-        value="{{ $model->payment ?? '' }}"
-      />
-
       <button type="submit" class="btn app-btn-primary" >Save Changes</button>
     </form>
   </x-admin.card>
-  <x-admin.card md="4" lg="4">
-    <div class="row">
-      <div class="col">
-        <table class="table">
-          <tr>
-            <th>Nama Dokumen</th>
-            <th>preview</th>
-          </tr>
-          <tr>
-            <td>Surat kelulusan</td>
-            <td>
-              <img src="{{ asset('/dumy/kelulusan.jpg') }}" width="100" alt="">
-            </td>
-          </tr>
-          <tr>
-            <td>Kartu Keluarga</td>
-            <td>
-              <img src="{{ asset('/dumy/kelulusan.jpg') }}" width="100" alt="">
-            </td>
-          </tr>
-          <tr>
-            <td>Akta Kelahiran</td>
-            <td>
-              <img src="{{ asset('/dumy/kelulusan.jpg') }}" width="100" alt="">
-            </td>
-          </tr>
-          <tr>
-            <td>Bukti Pembayaran</td>
-            <td>
-              <img src="{{ asset('/dumy/kelulusan.jpg') }}" width="100" alt="">
-            </td>
-          </tr>
-        </table>
+  @isset($model)
+    <x-admin.card md="4" lg="4">
+      <div class="row">
+        <div class="col">
+          <table class="table">
+            <tr>
+              <th>Nama Dokumen</th>
+              <th>preview</th>
+            </tr>
+            <tr>
+              <td>Surat kelulusan</td>
+              <td>
+                <embed src="{{ asset($model->ijazah) }}" width="150" type="">
+                </td>
+              </tr>
+              <tr>
+                <td>Kartu Keluarga</td>
+                <td>
+                <embed src="{{ asset($model->family_card) }}" width="150" type="">
+                </td>
+              </tr>
+              <tr>
+                <td>Akta Kelahiran</td>
+                <td>
+                <embed src="{{ asset($model->akta) }}" width="150" type="">
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
-    </div>
-  </x-admin.card>
+    </x-admin.card>
+  @endisset
 </div>
 @endsection

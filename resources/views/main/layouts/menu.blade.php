@@ -10,11 +10,11 @@
   </div>
   <nav class="menu_nav">
     <ul class="menu_mm">
-      <li class="menu_mm"><a href="index.html">Home</a></li>
-      <li class="menu_mm"><a href="#">About</a></li>
-      <li class="menu_mm"><a href="#">Courses</a></li>
-      <li class="menu_mm"><a href="#">Blog</a></li>
-      <li class="menu_mm"><a href="#">Page</a></li>
+      <li class="{{ Request::url() == url('/') ? 'active': ''}}"><a href="/">Home</a></li>
+      <li class="{{ Request::is('articles*') ? 'active': ''}}"><a href="{{ route('main-article.index') }}">Post</a></li>
+      <li class="{{ Request::is('galeries*') ? 'active': ''}}"><a href="{{ route('main-galeries.index') }}">Galeri</a></li>
+      <li class="{{ Request::is('profile*') ? 'active': ''}}"><a href="{{ route('main-profile.index') }}">Profil</a></li>
+      <li class="{{ Request::is('pendaftar*') ? 'active': ''}}"><a href="{{ route('pendaftar.index') }}">Pendaftar</a></li>
       @auth
         <li>
           <a href="{{ route("frontpage.dashboard") }}" class="btn background-dark text-white ml-4">Dashboard</a>

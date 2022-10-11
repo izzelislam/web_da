@@ -18,6 +18,7 @@ class Article extends Model
         'content',
         'created_by',
         'updated_by',
+        'short_describtion'
     ];
     
     public function category()

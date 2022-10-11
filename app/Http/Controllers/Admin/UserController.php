@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PendaftarExport;
 use App\Http\Controllers\Controller;
 use App\Models\Doc;
 use App\Models\SchoolYear;
@@ -97,5 +98,12 @@ class UserController extends Controller
         $doc = collect(Doc::find($id));
         $filepath = public_path($doc[$type]);
         return Response::download($filepath); 
+    }
+
+    public function userExport()
+    {
+        $year = isset(request()->school_year) ? request()->school_year : date('Y');
+        $name = 'Data Pendaftar-'.'-'.$year;
+        return (new PendaftarExport)->download($name.'.xlsx');
     }
 }

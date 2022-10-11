@@ -29,8 +29,10 @@
         </div>
         <div class="col-12 col-md-6 col-lg-6">
           <div><strong>Nama :</strong>{{ auth()->user()->name }}</div>
+          <div><strong>Jenis Kelamin :</strong>{{ auth()->user()->gender }}</div>
           <div><strong>Email :</strong>{{ auth()->user()->email }}</div>
           <div><strong>No Hp :</strong>{{ auth()->user()->phone_number }}</div>
+          <div><strong>Kode Pendaftaran :</strong>{{ auth()->user()->code }}</div>
           <div><strong>Pembuatan Akun :</strong>{{ auth()->user()->created_at}}</div>
           <div class="mt-2">
             <i class="text-primary">*Untuk merubah profile anda silahkan ke menu Profile atau klik link berikut !</i>
@@ -66,20 +68,25 @@
         
         <div class="intro">
           Status : 
-          @if (empty($model->biodata))
+          @if (empty($model->payment))
             <span class="badge bg-danger">Belum Lunas</span>
           @endif
-          @if (!empty($model->biodata))
-            <span class="badge bg-success">Lunas</span>
-          @endif
+          @isset($model->payment)
+            @if (!empty($model->payment->status === 0))
+              <span class="badge bg-warning">Menunggu konfirmasi</span>
+            @endif
+            @if (!empty($model->payment->status === 1))
+              <span class="badge bg-success">Lunas</span>
+            @endif
+          @endisset
         </div>
       </div><!--//app-card-body-->
       <div class="app-card-footer p-4 mt-auto">
-        @if (empty($model->biodata))
+        @if (empty($model->payment))
           <a class="btn app-btn-secondary" href="{{ route("student-biodata.create") }}">Upload Bukti Pembauaran</a>
         @endif
-        @if (!empty($model->biodata))
-          <a class="btn app-btn-secondary" href="{{ route("student-biodata.create") }}">Edit Biodata</a>
+        @if (!empty($model->payment) && $model->payment->status === 0)
+          <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_1 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn app-btn-secondary" >konfirmasi pembayaran</a>
         @endif
       </div><!--//app-card-footer-->
     </div><!--//app-card-->

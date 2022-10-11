@@ -59,8 +59,10 @@ class StudentAuthController extends Controller
             'name'          => 'required',
             'email'         => 'required|email|unique:users,email',
             'phone_number'  => 'required|unique:users,phone_number',
-            'password'      => 'required|min:6|max:12'
+            'password'      => 'required|min:6|max:12',
+            'gender'        => 'required'
         ],[
+            'gender.required'       => "jenis kelamin wajib di isi",
             'unit_id.required'      => "wajib memilih unit",
             'unit_id.exists'        => "Unit Tidak Ditemukan",
             'name.required'         => "Nama memilih unit",
@@ -76,6 +78,7 @@ class StudentAuthController extends Controller
 
         $request['password']        = bcrypt(request('password'));
         $request['image']           = '/dumy/avatar.jpg';
+        $request['code']            = CodeGenerator(16);
         
         $year = SchoolYear::orderBy('year', 'desc')->first();
         if ($year->status){

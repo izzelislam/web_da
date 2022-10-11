@@ -1,5 +1,6 @@
 <footer class="footer">
-  <div class="footer_background" style="background-image:url(images/footer_background.png)"></div>
+  {{-- background-image:url(images/footer_background.png --}}
+  <div class="footer_background" style=""></div>
   <div class="container">
     <div class="row footer_row">
       <div class="col">
@@ -12,18 +13,17 @@
               <div class="footer_section footer_about">
                 <div class="footer_logo_container">
                   <a href="#">
-                    <div class="footer_logo_text">Unic<span>at</span></div>
+                    <img class="logo" src="{{ asset('images/component/logo.png') }}" alt="logo"> <span class="btn side-logo text-white">Daarul Atqiyaa'</span>
                   </a>
                 </div>
                 <div class="footer_about_text">
-                  <p>Lorem ipsum dolor sit ametium, consectetur adipiscing elit.</p>
+                  <p>Pondok pesantern dan studi islam Daarul Atqiyaa'</p>
                 </div>
                 <div class="footer_social">
                   <ul>
-                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="https://web.facebook.com/mahadtahfidz.daarulatqiya" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.instagram.com/mtsidaarulatqiyaa/" target="blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCZE7q8hBkFPqPmryyhFUz4g" target="blank"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -34,12 +34,13 @@
         
               <!-- Footer Contact -->
               <div class="footer_section footer_contact">
-                <div class="footer_title">Contact Us</div>
+                <div class="footer_title">Kontak Kami</div>
                 <div class="footer_contact_info">
                   <ul>
-                    <li>Email: Info.deercreative@gmail.com</li>
-                    <li>Phone:  +(88) 111 555 666</li>
-                    <li>40 Baria Sreet 133/2 New York City, United States</li>
+                    <li>Email: {{ SettingData()->email ?? '' }}</li>
+                    <li>Phone 1:  {{ SettingData()->wa_1 ?? '' }}</li>
+                    <li>Phone 2:  {{ SettingData()->wa_2 ?? '' }}</li>
+                    <li>{{ SettingData()->address ?? '' }}</li>
                   </ul>
                 </div>
               </div>
@@ -50,17 +51,13 @@
         
               <!-- Footer links -->
               <div class="footer_section footer_links">
-                <div class="footer_title">Contact Us</div>
+                <div class="footer_title">Pintasan</div>
                 <div class="footer_links_container">
                   <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="about.html">Article</a></li>
+                    <li><a href="contact.html">Galeri</a></li>
+                    <li><a href="#">Profil</a></li>
                   </ul>
                 </div>
               </div>
@@ -89,16 +86,7 @@
       <div class="col">
         <div class="copyright d-flex flex-lg-row flex-column align-items-center justify-content-start">
           <div class="cr_text">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-            <div class="ml-lg-auto cr_links">
-              <ul class="cr_list">
-                <li><a href="#">Copyright notification</a></li>
-                <li><a href="#">Terms of Use</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-              </ul>
-            </div>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Divisi IT Daarul Atqiyaa
         </div>
       </div>
     </div>

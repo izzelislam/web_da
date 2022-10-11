@@ -8,14 +8,14 @@
           <div class="col">
             <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
               <ul class="top_bar_contact_list">
-                <li><div class="question">Have any questions?</div></li>
+                <li><div class="question">Informasi lebih lanjut silakan hubungi</div></li>
                 <li>
                   <i class="fa fa-phone" aria-hidden="true"></i>
-                  <div>001-1234-88888</div>
+                  <div>{{ SettingData()->wa_1 ?? '' }}</div>
                 </li>
                 <li>
                   <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                  <div>info.deercreative@gmail.com</div>
+                  <div>{{ SettingData()->email ?? '' }}</div>
                 </li>
               </ul>
               <!-- <div class="top_bar_login ml-auto">
@@ -27,7 +27,10 @@
       </div>
     </div>				
   </div>
-
+{{-- @php
+    $d = request()->is('/');
+    dd($d);
+@endphp --}}
   <!-- Header Content -->
   <div class="header_container">
     <div class="container">
@@ -35,18 +38,18 @@
         <div class="col">
           <div class="header_content d-flex flex-row align-items-center justify-content-start">
             <div class="logo_container">
-              <a href="#">
+              <a href="/">
                 <img class="logo" src="{{ asset('images/component/logo.png') }}" alt="logo"> <span class="btn side-logo">Daarul Atqiyaa'</span>
                 <!-- <div class="logo_text">Unic<span>at</span></div> -->
               </a>
             </div>
             <nav class="main_nav_contaner ml-auto">
               <ul class="main_nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="about.html">Artikel</a></li>
-                <li><a href="courses.html">Galeri</a></li>
-                <li><a href="blog.html">Profil</a></li>
-                <li><a href="#">Program</a></li>
+                <li class="{{ Request::url() == url('/') ? 'active': ''}}"><a href="/">Home</a></li>
+                <li class="{{ Request::is('articles*') ? 'active': ''}}"><a href="{{ route('main-article.index') }}">Post</a></li>
+                <li class="{{ Request::is('galeries*') ? 'active': ''}}"><a href="{{ route('main-galeries.index') }}">Galeri</a></li>
+                <li class="{{ Request::is('profile*') ? 'active': ''}}"><a href="{{ route('main-profile.index') }}">Profil</a></li>
+                <li class="{{ Request::is('pendaftar*') ? 'active': ''}}"><a href="{{ route('pendaftar.index') }}">Pendaftar</a></li>
                 @auth
                   <li>
                     <a href="{{ route("frontpage.dashboard") }}" class="btn background-dark text-white ml-4">Dashboard</a>
@@ -75,7 +78,7 @@
   </div>
 
   <!-- Header Search Panel -->
-  <div class="header_search_container">
+  {{-- <div class="header_search_container">
     <div class="container">
       <div class="row">
         <div class="col">
@@ -90,5 +93,5 @@
         </div>
       </div>
     </div>			
-  </div>			
+  </div>			 --}}
 </header>

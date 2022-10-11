@@ -22,6 +22,7 @@ class ArticleFactory extends Factory
             'meta'          => $this->faker->sentence(4),
             'slug'          => $this->faker->slug(6, true),
             'cover_image'   => '/dumy/tes.jpg',
+            'short_describtion'       => $this->faker->paragraphs(5, true),
             'content'       => $this->faker->paragraphs(50, true),
             'created_by'    => $this->faker->name(),
             'updated_by'    => $this->faker->name(),

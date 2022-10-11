@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ArticleCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,9 @@ class ArticleCategorySeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\ArticleCategory::factory(10)->create();
+        ArticleCategory::create([
+            'name' => 'kabar'
+        ]);
+        \App\Models\ArticleCategory::factory(9)->create();
     }
 }

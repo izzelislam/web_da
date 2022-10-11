@@ -18,9 +18,25 @@ class ProfileController extends Controller
         return view('student.profile.form', $data);
     }
 
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        # code...
+        if (!auth()->guard('web')->check()){return abort(403);}
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone_number' => 'required',
+        ]);
+
+        $data = User::findOrFail(auth()->guard('web')->user()->id);
+        if (!empty(request('password'))){
+            $request['password'] = bcrypt(request('password'));
+        }else{
+            $request['password'] = $data->password;
+        }
+
+        $data->update($request->all());
+
+        return redirect()->back()->with('success', 'berhasil update profil');
     }
 
     public function updateImageProfile(UploadPhotoRequest $request)

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('meta');
             $table->string('slug');
             $table->string('cover_image');
-            $table->text('content');
+            $table->longText('content');
+            $table->text('short_describtion');
             $table->string('created_by');
             $table->string('updated_by');
             $table->timestamps();

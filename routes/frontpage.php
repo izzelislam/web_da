@@ -4,13 +4,11 @@ use App\Http\Controllers\Auth\StudentAuthController;
 use App\Http\Controllers\FrontPage\BiodataController;
 use App\Http\Controllers\FrontPage\DashboardController;
 use App\Http\Controllers\FrontPage\DocController;
-use App\Http\Controllers\FrontPage\HomeController;
 use App\Http\Controllers\FrontPage\ParentController;
 use App\Http\Controllers\FrontPage\PaymentController;
 use App\Http\Controllers\FrontPage\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home-page');
 
 Route::get('/login', [StudentAuthController::class, 'login'])->name('login.index');
 Route::post('/login', [StudentAuthController::class, 'loginProcess'])->name('login.store');
@@ -38,8 +36,8 @@ Route::prefix('/student')->middleware(['auth:web', 'student'])->group(function()
     
     Route::get('/docs', [DocController::class, 'create'])->name('student-docs.create');
     Route::post('/docs', [DocController::class, 'store'])->name('student-docs.store');
-    Route::get('/docs/edit', [DocController::class, 'edit'])->name('student-docs.edit');
-    Route::put('/docs/update', [DocController::class, 'update'])->name('student-docs.update');
+    // Route::get('/docs/edit', [DocController::class, 'edit'])->name('student-docs.edit');
+    // Route::put('/docs/update', [DocController::class, 'update'])->name('student-docs.update');
   
     Route::put('/payment', [PaymentController::class, 'update'])->name('payment.update');
   });

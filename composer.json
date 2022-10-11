@@ -11,7 +11,9 @@
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
+        "maatwebsite/excel": "^3.1",
         "power-components/livewire-powergrid": "^3.3",
+        "psr/simple-cache": "2.0",
         "rappasoft/laravel-livewire-tables": "^2.8",
         "yaza/laravel-repository-service": "^3.2"
     },
@@ -30,7 +32,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         },
-        "file": [
+        "files": [
             "app/Helper/helper.php"
         ]
     },

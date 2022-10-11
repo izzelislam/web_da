@@ -48,6 +48,9 @@ class ArticleCategoryController extends Controller
 
     public function edit($id)
     {
+        if ($id === 1){
+            return redirect()->back()->with('error', 'kategori tidak bisa di update');
+        }
         $data['model'] = $this->model->find($id);
         $data['route'] = route('article-category.update', $id);
 
@@ -56,6 +59,9 @@ class ArticleCategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+        if ($id === 1){
+            return redirect()->back()->with('error', 'kategori tidak bisa di update');
+        }
         $data = $this->model->find($id);
         $data->update($request->all());
 
@@ -64,6 +70,9 @@ class ArticleCategoryController extends Controller
 
     public function destroy($id)
     {
+        if ($id === 1){
+            return redirect()->back()->with('error', 'kategori tidak bisa di hapus');
+        }
         $data = $this->model->findOrFail($id);
         $data->delete();
 

@@ -14,13 +14,19 @@
         @if (!empty($model))
           <div class="my-5 text-center">
             <h4 class="text-secondary">Menunggu konfirmasi dari admin</h4>
-            <button class="btn btn-success text-white mt-3">hubunggi admin</button>
+            @if (!empty(SettingData()->wa_1))
+              <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_1 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn btn-success text-white mt-3">hubunggi admin</a>
+            @endif
+            @if (!empty(SettingData()->wa_2))
+              <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_2 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn btn-success text-white mt-3">hubunggi admin 2</a>
+            @endif
           </div>
+
         @endif
         @if (empty($model))
           <div class="my-5 text-center">
             <h4 class="text-secondary">Silahkan Melakukan Pembayaran Sebelum Melanjutkan Proses Selanjutnya</h4>
-            <button class="btn btn-success text-white mt-3">Lakukan Pembayaran</button>
+            <a href="{{ route('payment.index') }}" class="btn btn-success text-white mt-3">Lakukan Pembayaran</a>
           </div>
         @endif
       </div>

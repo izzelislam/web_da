@@ -11,10 +11,12 @@ class Setting extends Model
 
     protected $fillable = [
         'about',
-        'wa',
+        'wa_1',
+        'wa_2',
         'instagram',
         'youtube',
         'email',
-        'address'
+        'address',
+        'logo'
     ];
 }

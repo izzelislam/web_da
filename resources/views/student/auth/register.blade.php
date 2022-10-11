@@ -84,8 +84,27 @@
           </div>
 
           <div class="mb-3 ">
+            <select name="gender" id="" class="form-control
+            @error("gender")
+              is-invalid
+            @enderror
+            ">
+              <option >-- pilih Jenis Kelamin --</option>
+              <option value="laki-laki"> Laki-Laki </option>
+              <option value="Perempuan"> Perempuan </option>
+            </select>
+            @error('gender')
+              <div class="mt-1">
+                <small>
+                  <i><b class="text-danger">{{ $message }}</b></i>
+                </small>
+              </div>
+            @enderror
+          </div>
+
+          <div class="mb-3 ">
             <select name="unit_id" id="" class="form-control
-            @error("name")
+            @error("unit_id")
               is-invalid
             @enderror
             ">

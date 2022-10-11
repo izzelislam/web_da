@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	@stack('course-css')
 	@include('main.layouts.style')
 	@stack('addon-style')
 </head>

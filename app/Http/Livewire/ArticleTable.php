@@ -53,6 +53,7 @@ final class ArticleTable extends PowerGridComponent
     {
         $query = Article::query();
         $query->with('category');
+        $query->orderBy('created_at', 'desc');
         return $query;
     }
 

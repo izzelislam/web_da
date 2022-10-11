@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FeedbackSeeder::class);
         $this->call(GalerySeeder::class);
         $this->call(MotherSeeder::class);
-        $this->call(SettingSeeder::class);
+        // $this->call(SettingSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(VideoSeeder::class);
         $this->call(PaymentSeeder::class);

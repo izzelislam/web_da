@@ -38,7 +38,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         $data['title']          = $this->page_title;
-        $data['model'] =  $this->model->where('id',$id)->with('category')->first();
+        $data['model'] =  $this->model->where('id',$id)->with('category', 'feedbacks')->first();
         return view($this->view.'detail', $data);
 
     }
@@ -61,6 +61,7 @@ class ArticleController extends Controller
             'meta'        => 'required',
             'img'         => 'required|mimes:png,jpg|dimensions:3/2|max:2000',
             'content'     => 'required',
+            'short_describtion' => 'required'
         ]);
 
         $request['cover_image'] = $this->uploadFile($request->file('img'));
