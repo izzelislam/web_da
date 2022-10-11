@@ -27,7 +27,7 @@
         <h3 class="mb-3 text-center">Galeri Foto</h5>
         <div class="row">
           @foreach ($images as $img)
-            <div class="col-3 mb-4">
+            <div class="col-12 col-md-3 col-lg-3 mb-4">
               <a target="blank" href="{{ asset($img->name) }}">
                 <img class="img-fluid" src="{{ asset($img->name) }}" alt="">
               </a>
@@ -40,7 +40,7 @@
         <h3 class="mb-3 text-center">Galeri Video</h5>
         <div class="row">
           @foreach ($videos as $video)
-            <div class="col-3 mb-4 p-3">
+            <div class="col-12 col-md-3 col-lg-3 mb-4 p-3">
               <iframe width="260" src="{{ $video->link }}" frameborder="0"></iframe>
               <div><h5>{{ $video->title }}</h5></div>
               <div>{{ $video->desc }}</div>
