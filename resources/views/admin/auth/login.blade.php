@@ -7,6 +7,23 @@
 <body class="app app-login p-0">    	
     <div class="row g-0 app-auth-wrapper">
 	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
+				
+				<div>
+					@if (session('success'))
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							{{ session('success') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
+
+					@if (session('error'))
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							{{ session('error') }}
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+					@endif
+				</div>
+
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
 				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="http://mtsidaarulatqiyaa.com/wp-content/uploads/2018/03/Revisi-Logo-PONDOK-768x768.png" alt="logo"></a></div>
@@ -20,10 +37,19 @@
                   id="signin-email" 
                   name="email" 
                   type="email" 
-                  class="form-control signin-email" 
+                  class="form-control signin-email @error('email')
+										is-invalid
+									@enderror" 
                   placeholder="Email address" 
                   required="required"
                 >
+								@error('email')
+									<div class="mt-1">
+										<small>
+											<i><b class="text-danger">{{ $message }}</b></i>
+										</small>
+									</div>
+								@enderror
 							</div><!--//form-group-->
 							<div class="password mb-3">
 								<label class="sr-only" for="signin-password">Password</label>
@@ -31,10 +57,19 @@
                   id="signin-password" 
                   name="password" 
                   type="password" 
-                  class="form-control signin-password" 
+                  class="form-control signin-password @error('password')
+										is-invalid
+									@enderror" 
                   placeholder="Password" 
                   required="required"
                 >
+								@error('password')
+									<div class="mt-1">
+										<small>
+											<i><b class="text-danger">{{ $message }}</b></i>
+										</small>
+									</div>
+								@enderror
 								<div class="extra mt-3 row justify-content-between">
 									<div class="col-6">
 										<div class="form-check">
@@ -74,16 +109,16 @@
 		    <div class="auth-background-overlay p-3 p-lg-5">
 			    <div class="d-flex flex-column align-content-end h-100">
 				    <div class="h-100"></div>
-				    <div class="overlay-content p-3 p-lg-4 rounded">
+				    {{-- <div class="overlay-content p-3 p-lg-4 rounded">
 					    <h5 class="mb-3 overlay-title">Explore Portal Admin Template</h5>
 					    <div>Portal is a free Bootstrap 5 admin dashboard template. You can download and view the template license <a href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">here</a>.</div>
-				    </div>
+				    </div> --}}
 				</div>
 		    </div><!--//auth-background-overlay-->
 	    </div><!--//auth-background-col-->
     
     </div><!--//row-->
-
+		@include('admin.layouts.script')
 
 </body>
 </html> 

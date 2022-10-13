@@ -11,9 +11,9 @@
 <x-admin.card md="8" lg="8">
   <form class="settings-form" method="POST" action="{{ $route }}" enctype="multipart/form-data">
     @csrf
-    @isset($model)
+    {{-- @isset($model)
       @method('PUT')
-    @endisset
+    @endisset --}}
 
     @if (isset($model->logo))
       <img src="{{ asset($model->logo) }}" alt="" width="80">

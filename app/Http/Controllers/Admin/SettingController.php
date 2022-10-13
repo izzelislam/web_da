@@ -19,28 +19,35 @@ class SettingController extends Controller
     {
         $setting = Setting::first();
 
-        $request->validate([
+        $fields = [
             'about' => 'required',
             'wa_1' => 'required',
             'instagram' => 'required|url',
             'youtube' => 'required|url',
             'email' => 'required|email',
             'address' => 'required',
-            'photo' => 'required|image|mimes:jpg,png'
-        ]);
+            
+        ];
+
+        if ($request->filled('photo')){
+            $fields['photo'] = 'required|image|mimes:jpg,png';
+            // dd('ada');
+        }
+
+        $request->validate($fields);
         
-        if (!empty($request->file('photo'))) {
+        if (!empty($request->filled('photo'))) {
             // check existing image
             if (isset($setting->image)) {
                 // delete existing image
-                $this->deleteFile($setting->image);
+                $this->deleteFile($setting->logo);
 
                 $request['logo'] = $this->uploadFile($request->file('photo'));
             }else{
                 $request['logo'] = $this->uploadFile($request->file('photo'));
             }
         }else{
-            $request['logo'] = $setting->image;
+            $request['logo'] = $setting->logo;
         }
 
         // check if setting exist

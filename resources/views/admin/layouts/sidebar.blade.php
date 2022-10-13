@@ -92,8 +92,11 @@
   <div class="sidepanel-inner d-flex flex-column">
     <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
     <div class="app-branding">
-        <a class="app-logo" href="index.html"><img class="logo-icon me-2" src="/template/assets/images/app-logo.svg" alt="logo"><span class="logo-text">PORTAL</span></a>
-
+      <a  href="index.html">
+        @isset(SettingData()->logo)
+          <img width="60" src="{{ asset(SettingData()->logo) }}" alt="logo">
+        @endisset
+        <span class="logo-text">CMS</span></a>
     </div>
     
     <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">

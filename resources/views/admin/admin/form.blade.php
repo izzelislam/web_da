@@ -35,6 +35,14 @@
         value="{{ $model->phone_number ?? '' }}"
       />
 
+      <x-admin.input
+        label="Password"
+        name="password"
+        type="password"
+        value=""
+      />
+
+
       <button type="submit" class="btn app-btn-primary" >Save Changes</button>
     </form>
   </x-admin.card>
