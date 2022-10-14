@@ -20,16 +20,16 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(ArticleCategorySeeder::class);
         $this->call(ArticleSeeder::class);
-        $this->call(BiodataSeeder::class);
-        $this->call(DocSeeder::class);
-        $this->call(FatherSeeder::class);
-        $this->call(FeedbackSeeder::class);
         $this->call(GalerySeeder::class);
-        $this->call(MotherSeeder::class);
-        // $this->call(SettingSeeder::class);
-        $this->call(UserSeeder::class);
         $this->call(VideoSeeder::class);
-        $this->call(PaymentSeeder::class);
+        // $this->call(BiodataSeeder::class);
+        // $this->call(DocSeeder::class);
+        // $this->call(FatherSeeder::class);
+        // $this->call(FeedbackSeeder::class);
+        // $this->call(MotherSeeder::class);
+        // $this->call(SettingSeeder::class);
+        // $this->call(UserSeeder::class);
+        // $this->call(PaymentSeeder::class);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

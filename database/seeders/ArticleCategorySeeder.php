@@ -18,6 +18,6 @@ class ArticleCategorySeeder extends Seeder
         ArticleCategory::create([
             'name' => 'kabar'
         ]);
-        \App\Models\ArticleCategory::factory(9)->create();
+        \App\Models\ArticleCategory::factory(4)->create();
     }
 }
