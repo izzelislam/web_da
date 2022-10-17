@@ -18,7 +18,7 @@
 							<div class="row">
 								<div class="col text-center">
 									<h4 class="text-white my-3">selamat Datang Di Halaman Resmi</h3>
-									<h1 class="home_slider_title" id="type">Ma'had Tahfidz Dan Studi Islam <br> Daarul Atqiyaa'</>
+									<h1 class="home_slider_title" id="type">Pondok Pesantren Daarul Atqiyaa'</h1>
 									<p id="types" class="home_slider_title"></p>
 									<!-- <div class="home_slider_subtitle">Future Of Education Technology</div> -->
 									@if ($school_year->status)
