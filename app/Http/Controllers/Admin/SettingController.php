@@ -47,7 +47,7 @@ class SettingController extends Controller
                 $request['logo'] = $this->uploadFile($request->file('photo'));
             }
         }else{
-            $request['logo'] = $setting->logo;
+            $request['logo'] = $setting->logo ?? '';
         }
 
         // check if setting exist
