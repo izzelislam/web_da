@@ -47,7 +47,7 @@ Route::prefix('/admin')->middleware(['auth:admin', 'admin'])->group(function(){
   Route::get('/account/{id}', [AccountController::class, 'show'])->name('account.show');
   Route::get('/account/{id}/edit', [AccountController::class, 'edit'])->name('account.edit');
   Route::put('/account/{id}', [AccountController::class, 'update'])->name('account.update');
-  Route::delete('/account/{id}', [AccountController::class, 'update'])->name('account.update');
+  Route::delete('/account/{id}', [AccountController::class, 'destroy'])->name('account.delete');
 
 
   Route::get('/galery', [GaleryController::class, 'index'])->name('galery.index');

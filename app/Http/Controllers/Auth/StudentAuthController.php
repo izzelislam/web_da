@@ -60,7 +60,8 @@ class StudentAuthController extends Controller
             'email'         => 'required|email|unique:users,email',
             'phone_number'  => 'required|unique:users,phone_number',
             'password'      => 'required|min:6|max:12',
-            'gender'        => 'required'
+            'gender'        => 'required',
+            'nik'        => 'required|unique:users,nik'
         ],[
             'gender.required'       => "jenis kelamin wajib di isi",
             'unit_id.required'      => "wajib memilih unit",
@@ -70,6 +71,8 @@ class StudentAuthController extends Controller
             'email.email'           => "Email tidak valid",
             'email.unique'          => "Email Sudah terdaftar",
             'phone_number.required' => "Nomor telepon wajib di isi",
+            'nik.unique'          => "Nik Sudah terdaftar",
+            'nik.required' => "Nik telepon wajib di isi",
             'phone_number.unique'   => "Nomor telepon sudah terdaftar",
             'password.required'     => "Password wajib di isi",
             'password.min'          => "Password minimal 6 karakter",

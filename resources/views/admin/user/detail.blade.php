@@ -15,6 +15,7 @@
     <div class="row">
       <div class="col">
         <div class="mb-2"><strong>Nama:</strong> {{ $model->name ?? '' }}</div>
+        <div class="mb-2"><strong>NIK:</strong> {{ $model->nik ?? '' }}</div>
         <div class="mb-2"><strong>Email:</strong> {{ $model->email ?? '' }}</div>
         <div class="mb-2"><strong>No Hp:</strong> {{ $model->phone_number ?? '' }}</div>
         <div class="mb-2"><strong>Tanggal Daftar:</strong> {{ $model->created_at->format('d/m/Y') ?? '' }}</div>

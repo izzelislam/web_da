@@ -233,11 +233,11 @@ final class UserTable extends PowerGridComponent
                     "route"     => '/admin/users/',
                     "id"        => 'id',
                 ]),
-            Button::add('download')
-                ->bladeComponent('livewire.download-button', [
-                    "route"     => '/admin/users/',
-                    "id"        => 'id',
-                ])
+            // Button::add('download')
+            //     ->bladeComponent('livewire.download-button', [
+            //         "route"     => '/admin/users/',
+            //         "id"        => 'id',
+            //     ])
         ];
     }
 

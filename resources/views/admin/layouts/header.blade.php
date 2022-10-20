@@ -108,7 +108,7 @@
                         
         </div><!--//dropdown-menu-->					        
           </div><!--//app-utility-item-->
-            <div class="app-utility-item">
+            {{-- <div class="app-utility-item">
               <a href="settings.html" title="Settings">
                 <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +116,7 @@
                   <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
                 </svg>
             </a>
-        </div><!--//app-utility-item-->
+        </div><!--//app-utility-item--> --}}
             
             <div class="app-utility-item app-user-dropdown dropdown">
               <a class="dropdown-toggle" id="user-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><img src="/template/assets/images/user.png" alt="user profile"></a>

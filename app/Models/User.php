@@ -26,7 +26,8 @@ class User extends Authenticatable
         'image',
         'password',
         'gender',
-        'code'
+        'code',
+        'nik'
     ];
 
     /**
@@ -81,5 +82,17 @@ class User extends Authenticatable
     public function payment()
     {
         return $this->hasOne(Payment::class);
+    }
+
+    protected static function boot() {
+        parent::boot();
+        
+        static::deleting(function($check) {
+            $check->doc()->delete();
+            $check->father()->delete();
+            $check->mother()->delete();
+            $check->biodata()->delete();
+            $check->payment()->delete();
+        });
     }
 }

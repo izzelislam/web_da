@@ -29,6 +29,7 @@
         </div>
         <div class="col-12 col-md-6 col-lg-6">
           <div><strong>Nama :</strong>{{ auth()->user()->name }}</div>
+          <div><strong>NIK :</strong>{{ auth()->user()->nik }}</div>
           <div><strong>Jenis Kelamin :</strong>{{ auth()->user()->gender }}</div>
           <div><strong>Email :</strong>{{ auth()->user()->email }}</div>
           <div><strong>No Hp :</strong>{{ auth()->user()->phone_number }}</div>

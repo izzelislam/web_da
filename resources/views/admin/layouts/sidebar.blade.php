@@ -94,7 +94,7 @@
     <div class="app-branding">
       <a  href="index.html">
         @isset(SettingData()->logo)
-          <img width="60" src="{{ asset(SettingData()->logo) }}" alt="logo">
+          <img width="60" src="{{ asset('images/component/logo.png') }}" alt="logo">
         @endisset
         <span class="logo-text">CMS</span></a>
     </div>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('school_year_id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('nik')->unique();
             $table->string('phone_number')->unique();
             $table->string('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();

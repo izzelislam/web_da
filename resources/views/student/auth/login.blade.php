@@ -34,7 +34,7 @@
 
       <div class="card rounded p-4 mt-5">
         <div class=" text-center">
-          <img width="100" class="my-2" src="http://mtsidaarulatqiyaa.com/wp-content/uploads/2018/03/Revisi-Logo-PONDOK-768x768.png" alt="logo">
+          <img width="100" class="my-2" src="{{ asset('images/component/logo.png') }}" alt="logo">
           <h3 class="auth-heading text-secondary text-center mb-5">Masuk</h3>
         </div> 
         <form class="auth-form login-form" method="POST" action="{{ route("login.store") }}">

@@ -26,7 +26,7 @@
 
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
-				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="http://mtsidaarulatqiyaa.com/wp-content/uploads/2018/03/Revisi-Logo-PONDOK-768x768.png" alt="logo"></a></div>
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{ asset('images/component/logo.png') }}" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5">Log in to CMS</h2>
 			        <div class="auth-form-container text-start">
 						<form class="auth-form login-form" method="POST" action="{{ route("admin-auth.store") }}">

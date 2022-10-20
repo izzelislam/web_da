@@ -27,6 +27,7 @@ class UserFactory extends Factory
             'password'           => bcrypt('secret'),
             'remember_token' => Str::random(10),
             'code'          => CodeGenerator(16),
+            'nik'          => CodeGenerator(16),
             'gender'    => $this->faker->randomElement(['laki-laki', 'perempuan'])
         ];
     }

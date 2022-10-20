@@ -27,6 +27,7 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
     {
         return [
             'Nama',
+            'NIK',
             'Unit',
             'Tahun Ajaran',
             'Nama lengkap',
@@ -86,6 +87,7 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
     {
         return [
             $user->name,
+            $user->NIK,
             $user->unit->name,
             $user->schoolYear->year,
             $user->biodata->fullname ?? '',
