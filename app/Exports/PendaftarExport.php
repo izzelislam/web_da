@@ -27,10 +27,10 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
     {
         return [
             'Nama',
+            'Nama lengkap',
             'NIK',
             'Unit',
             'Tahun Ajaran',
-            'Nama lengkap',
             'Jenis Kelamin',
             'No Telepon',
             'Email',
@@ -44,7 +44,7 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
             'Kabupaten',
             'Provinsi',
             'Alamat',
-            'bahasa',
+            'Bahasa Sehari-hari',
             'Tinggi Badan',
             'Berat Badan',
             'Penglihatan',
@@ -53,6 +53,18 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
             'Penyakit yang sedanag diderita',
             'Penyakit yang pernah diderita',
             'Asal sekolah',
+            'Nama Ayah',
+            'Tanggal Lahir Ayah',
+            'Tempat Lahir Ayah',
+            'Profesi Ayah',
+            'Pendidikan Terakhir Ayah',
+            'Pendapatan Perbulan Ayah',
+            'Nama Ibu',
+            'Tanggal Lahir Ibu',
+            'Tempat Lahir Ibu',
+            'Profesi Ibu',
+            'Pendidikan Terakhir Ibu',
+            'Pendapatan Perbulan Ibu',
         ];
     }
 
@@ -61,7 +73,7 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
         $school_year = SchoolYear::where('status', 1)->orderBy('year', 'desc')->first();
         $users =     User::query();
 
-        $users->with(['unit', 'biodata', 'schoolyear']);
+        $users->with(['unit', 'biodata', 'schoolyear', 'father', 'mother']);
 
         if (isset(request()->unit)){
             $users->whereHas('unit', function ($query) {
@@ -87,10 +99,10 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
     {
         return [
             $user->name,
-            $user->NIK,
+            $user->biodata->fullname ?? '',
+            $user->nik,
             $user->unit->name,
             $user->schoolYear->year,
-            $user->biodata->fullname ?? '',
             $user->gender,
             $user->phone_number,
             $user->email,
@@ -114,6 +126,18 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
             $user->biodata->disease_present ?? '',
             $user->biodata->disease_once ?? '',
             $user->biodata->prev_school ?? '',
+            $user->father->name ?? '',
+            $user->father->birth_date ?? '',
+            $user->father->place_birth ?? '',
+            $user->father->profession ?? '',
+            $user->father->last_education ?? '',
+            $user->father->income ?? '',
+            $user->mother->name ?? '',
+            $user->mother->birth_date ?? '',
+            $user->mother->place_birth ?? '',
+            $user->mother->profession ?? '',
+            $user->mother->last_education ?? '',
+            $user->mother->income ?? '',
         ];
     }
 }

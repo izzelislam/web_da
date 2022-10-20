@@ -27,7 +27,7 @@
                   is-invalid
                 @enderror
               " 
-              placeholder="Mauskan Nama" 
+              placeholder="Nama" 
               required="required"
             >
             @error('name')
@@ -50,7 +50,7 @@
                 is-invalid
               @enderror
               " 
-              placeholder="Masukan NIK" 
+              placeholder="NIK" 
               required="required"
             >
             @error('nik')
@@ -73,7 +73,7 @@
                 is-invalid
               @enderror
               " 
-              placeholder="Mauskan No Hp" 
+              placeholder="No Hp" 
               required="required"
             >
             @error('phone_number')
@@ -95,7 +95,7 @@
                 is-invalid
               @enderror
               " 
-              placeholder="Email address" 
+              placeholder="Email" 
               required="required"
             >
             @error('email')
