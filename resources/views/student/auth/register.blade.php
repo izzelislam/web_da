@@ -43,7 +43,8 @@
             <input 
               id="nik" 
               name="nik" 
-              type="number" 
+              type="text"
+              inputmode="numeric" 
               class="form-control signin-email
               @error("nik")
                 is-invalid
@@ -65,7 +66,8 @@
             <input 
               id="phone_number" 
               name="phone_number" 
-              type="number" 
+              type="text"
+              inputmode="numeric"  
               class="form-control signin-email
               @error("name")
                 is-invalid
