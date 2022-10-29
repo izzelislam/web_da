@@ -84,7 +84,7 @@
       </div><!--//app-card-body-->
       <div class="app-card-footer p-4 mt-auto">
         @if (empty($model->payment))
-          <a class="btn app-btn-secondary" href="{{ route("student-biodata.create") }}">Upload Bukti Pembauaran</a>
+          <a class="btn app-btn-secondary" href="{{ route("student-biodata.create") }}">Upload Bukti Pembayaran</a>
         @endif
         @if (!empty($model->payment) && $model->payment->status === 0)
           <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_1 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn app-btn-secondary" >konfirmasi pembayaran</a>
@@ -107,7 +107,7 @@
                   
             </div><!--//col-->
             <div class="col-auto">
-              <h4 class="app-card-title">Biodata</h4>
+              <h4 class="app-card-title">Biodata Diri</h4>
             </div><!--//col-->
           </div><!--//row-->
       </div><!--//app-card-header-->

@@ -5,7 +5,11 @@ namespace App\Http\Controllers\FrontPage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\PaymentRequest;
+use App\Mail\PaymentMail;
+use App\Models\Admin;
 use App\Models\Payment;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -38,6 +42,14 @@ class PaymentController extends Controller
 
 
         Payment::create($request->all());
+
+
+        $admins = Admin::all();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new PaymentMail);
+        }
+
         return redirect()->back()->with('success', 'berhasil mengungah bukti pembayaran');
     }
 

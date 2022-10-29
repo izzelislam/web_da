@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Registrant;
+use App\Models\Admin;
 use App\Models\SchoolYear;
 use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class StudentAuthController extends Controller
 {
@@ -92,6 +95,12 @@ class StudentAuthController extends Controller
         }
 
         User::create($request->all());
+
+        $admins = Admin::all();
+
+        foreach ($admins as $admin) {
+            Mail::to($admin->email)->send(new Registrant);
+        }
 
         return redirect()->route('login.index')->with('success', 'berhasil membuat akun, silahkan mausk mengunakan email dan password yang sudah terdaftar');
     }
