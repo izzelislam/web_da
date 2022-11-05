@@ -38,7 +38,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         $data['title']          = $this->page_title;
-        $data['model'] =  $this->model->where('id',$id)->with('category', 'feedbacks')->first();
+        $data['model'] =  $this->model->where('id',$id)->first();
         return view($this->view.'detail', $data);
 
     }
@@ -47,7 +47,7 @@ class ArticleController extends Controller
     {
         $data['title'] = $this->page_title;
         $data['route'] = route($this->route.'store');
-        $data['categories']     = ArticleCategory::all();
+        // $data['categories']     = ArticleCategory::all();
         return view($this->view.'form', $data);
     }
 
@@ -56,16 +56,12 @@ class ArticleController extends Controller
         // dd($request->all());
 
         $request->validate([
-            'category_id' => 'required',
             'title'       => 'required',
-            'meta'        => 'required',
             'img'         => 'required|mimes:png,jpg|dimensions:3/2|max:2000',
             'content'     => 'required',
-            'short_describtion' => 'required'
         ]);
 
         $request['cover_image'] = $this->uploadFile($request->file('img'));
-        $request['slug']        = Str::slug(request('title'));
         $request['created_by']  = auth()->guard('admin')->user()->email;
         $request['updated_by']  = auth()->guard('admin')->user()->email;
 
@@ -79,7 +75,7 @@ class ArticleController extends Controller
         $data['title']  = $this->page_title;
         $data['model'] = $this->model->find($id);
         $data['route'] = route($this->route.'update', $id);
-        $data['categories']     = ArticleCategory::all();
+        // $data['categories']     = ArticleCategory::all();
 
         return view($this->view.'form', $data);
     }
@@ -87,9 +83,7 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'category_id' => 'required',
             'title'       => 'required',
-            'meta'        => 'required',
             'img'         => 'mimes:png,jpg|dimensions:3/2|max:2000',
             'content'     => 'required',
         ]);

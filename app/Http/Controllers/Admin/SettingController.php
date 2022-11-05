@@ -20,12 +20,8 @@ class SettingController extends Controller
         $setting = Setting::first();
 
         $fields = [
-            'about' => 'required',
             'wa_1' => 'required',
-            'instagram' => 'required|url',
             'youtube' => 'required|url',
-            'email' => 'required|email',
-            'address' => 'required',
             
         ];
 

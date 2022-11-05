@@ -39,35 +39,9 @@
     />
 
     <x-admin.input
-      label="Instagram"
-      name="instagram"
-      value="{{ $model->instagram ?? '' }}"
-    />
-
-    <x-admin.input
       label="Youtube"
       name="youtube"
       value="{{ $model->youtube ?? '' }}"
-    />
-
-    <x-admin.input
-      label="Email"
-      name="email"
-      value="{{ $model->email ?? '' }}"
-    />
-
-    <x-admin.input
-      label="Alamat"
-      name="address"
-      type="text"
-      value="{{ $model->address ?? '' }}"
-    />
-
-    <x-admin.input
-      label="Tentang"
-      name="about"
-      type="text"
-      value="{{ $model->about ?? '' }}"
     />
 
     <button type="submit" class="btn app-btn-primary" >Save Changes</button>

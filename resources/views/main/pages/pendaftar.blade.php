@@ -2,24 +2,7 @@
 
 @section('content')
 <!-- Home -->
-
-<div style="height: 180px; background-color:rgb(235, 235, 235);">
-  <div class="breadcrumbs_container">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="breadcrumbs">
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li>Pendaftar</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>			
-</div>
-<div class="courses">
+<div class="courses mt-4">
   <div class="container">
     @include('main.layouts.alert')
     <div class="mb-4">
@@ -31,7 +14,7 @@
             <label for="">Masukan Kode Pendaftaran !</label>
             <div class="d-flex">
               <input name="code" type="text" class="form-control" required>
-              <button  class="btn background-dark text-white">cek Status Pendaftaran</button>
+              <button  class="btn bg-primary text-white">cek Status Pendaftaran</button>
             </div>
           </form>
         </div>

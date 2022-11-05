@@ -3,7 +3,6 @@
 @section('page-title')
   <x-admin.page-title 
     title="{{ $title ?? '' }}" 
-    route="{{ $create_route ?? '#' }}"  
   />
 @endsection
 

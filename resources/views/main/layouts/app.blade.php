@@ -1,29 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Loopple Templates: https://www.loopple.com/templates | Copyright Loopple (https://www.loopple.com) | This copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
 <head>
-	@stack('course-css')
 	@include('main.layouts.style')
-	@stack('addon-style')
 </head>
-<body class="">
 
-<div class="super_container">
-
-	<!-- Header -->
-	@include('main.layouts.navbar')
-	
-	<!-- Menu -->
+<body>
 	@include('main.layouts.menu')
 	
 	@yield('content')
 
-	<!-- Footer -->
-
 	@include('main.layouts.footer')
-</div>
-
-@include('main.layouts.script')
-@stack('addon-script')
-
+	
+	@include('main.layouts.script')
+	@stack('addon-script')
 </body>
-</html>

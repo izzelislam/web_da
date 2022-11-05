@@ -27,15 +27,15 @@
   ];
 
   $post = [
-    'Category' => [
-      'title' => 'Category',
-      'name'  => 'category',
-      'link'  => '/admin/article-category',
-      'icon'  => 'fa fa-leaf'
-    ],
-    'Article' => [
-      'title' => 'Article',
-      'name'  => 'article',
+    // 'Category' => [
+    //   'title' => 'Category',
+    //   'name'  => 'category',
+    //   'link'  => '/admin/article-category',
+    //   'icon'  => 'fa fa-leaf'
+    // ],
+    'Content' => [
+      'title' => 'Content',
+      'name'  => 'content',
       'link'  => '/admin/article',
       'icon'  => 'fa fa-file'
     ],

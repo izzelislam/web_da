@@ -40,7 +40,7 @@ class UserController extends Controller
     public function show($id)
     {
         $data['title']          = $this->page_title;
-        $data['model'] =  $this->model->where('id', $id)->with('biodata', 'father', 'mother', 'doc', 'unit', 'schoolYear', 'payment')->first();
+        $data['model'] =  $this->model->where('id', $id)->with('biodata.district', 'biodata.regency', 'biodata.province', 'ortu', 'qurbanSaving', 'unit', 'schoolYear', 'payment')->first();
 
         // dd($data['model']->toArray());
 

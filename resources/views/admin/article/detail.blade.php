@@ -20,9 +20,7 @@
     <div class="mb-2"><strong>Ditulis Oleh:</strong> {{ $model->created_by }} {{ $model->created_at->format('d/m/Y H:i') }}</div>
     <div class="mb-2"><strong>DiUpdete Oleh:</strong> {{ $model->updated_by }} {{ $model->updated_at->format('d/m/Y H:i') }}</div>
     {{-- <div class="mb-2"><strong>Status:</strong> <span class="badge bg-success">Active</span></div> --}}
-    <div class="my-3">
-      {!! $model->short_describtion !!}
-    </div>
+
     <div class="my-3">
       {!! $model->content !!}
     </div>
@@ -35,7 +33,7 @@
           <a class="btn app-btn-secondary" href="#">Cancel Plan</a>
       </div>
     </div> --}}
-    <div class="my-3">
+    {{-- <div class="my-3">
       <h5>Komentar</h6>
       <div class="mt-2">
 
@@ -49,6 +47,6 @@
         @endforeach
 
       </div>
-    </div>
+    </div> --}}
   </x-admin.card>
 @endsection

@@ -34,38 +34,10 @@
         @method('PUT')
       @endisset
 
-      <div class="mb-3 ">
-        <label for="setting-input-2" class="form-label">Category</label>
-        <select name="category_id" id="" class="form-control">
-          <option value="">-- pilih category --</option>
-          @foreach ($categories as$category )
-            <option 
-              @if (!empty($model))
-              {{ $model->category_id == $category->id ? 'selected' : '' }}
-              @endif
-              value="{{ $category->id }}">{{ $category->name }}
-            </option>
-          @endforeach
-        </select>
-        @error('category_id')
-          <div class="mt-1">
-            <small>
-              <i><b class="text-danger">{{ $message }}</b></i>
-            </small>
-          </div>
-        @enderror
-      </div>
-
       <x-admin.input
         label="Judul"
         name="title"
         value="{{ $model->title ?? '' }}"
-      />
-
-      <x-admin.input
-        label="Meta"
-        name="meta"
-        value="{{ $model->meta ?? '' }}"
       />
 
       <x-admin.input
@@ -74,20 +46,6 @@
         type="file"
         value="{{ $model->img ?? '' }}"
       />
-
-      <div class="mb-2">
-        <label for="" class="form-label">Deskripsi Singkat</label>
-        <textarea name="short_describtion" style="min-height: 100px"  class="form-control">
-          {{ old('content', $model->short_describtion ?? '') }}
-        </textarea>
-        @error('short_describtion')
-          <div class="mt-1">
-            <small>
-              <i><b class="text-danger">{{ $message }}</b></i>
-            </small>
-          </div>
-        @enderror
-      </div>
 
       <div class="mb-3">
         <label for="" class="form-label">Content</label>

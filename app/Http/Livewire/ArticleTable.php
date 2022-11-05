@@ -52,8 +52,6 @@ final class ArticleTable extends PowerGridComponent
     public function datasource(): Builder
     {
         $query = Article::query();
-        $query->with('category');
-        $query->orderBy('created_at', 'desc');
         return $query;
     }
 
@@ -90,10 +88,6 @@ final class ArticleTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('category_id')
-            ->addColumn('category', function (Article $article) {
-                return '<span>' . isset($article->category->name) ?  $article->category->name : '' . '</span>';
-            })
             ->addColumn('title')
 
            /** Example of custom column using a closure **/
@@ -101,8 +95,6 @@ final class ArticleTable extends PowerGridComponent
                 return strtolower(e($model->title));
             })
 
-            ->addColumn('meta')
-            ->addColumn('slug')
             ->addColumn('cover_image')
             ->addColumn('img', function (Article $article) {
                 return '<img src="' . asset($article->cover_image) . '" style="width: 100px; height: 60px;">';
@@ -134,31 +126,8 @@ final class ArticleTable extends PowerGridComponent
             Column::make('ID', 'id')
                 ->hidden()
                 ->makeInputRange(),
-
-            Column::make('CATEGORY ID', 'category_id')
-                ->hidden()
-                ->makeInputRange(),
-            
-            Column::add()
-                ->title('CATEGORY')
-                ->field('category', 'category_id')
-                ->makeInputText()
-                ->searchable()
-                ->sortable(),
-
+          
             Column::make('TITLE', 'title')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('META', 'meta')
-                ->hidden()
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('SLUG', 'slug')
-                ->hidden()
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -231,11 +200,11 @@ final class ArticleTable extends PowerGridComponent
                     "route"     => '/admin/article/',
                     "id"        => 'id',
                 ]),
-            Button::add('delete')
-                ->bladeComponent('livewire.delete-button', [
-                    "route"     => '/admin/article/',
-                    "id"        => 'id',
-                ])
+            // Button::add('delete')
+            //     ->bladeComponent('livewire.delete-button', [
+            //         "route"     => '/admin/article/',
+            //         "id"        => 'id',
+            //     ])
         ];
     }
 

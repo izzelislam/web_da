@@ -1,4 +1,4 @@
-<title>Ma'had Tahfidz Dan Studi Islam Daarul Atqiyaa'</title>
+<title>PSB - Pondok Pesantren Daarul Atqiyaa'</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name=”description” content=”Ma’had Tahfidz Dan Studi Islam Daarul Atqiyaa' merupakan lembaga pendidikan model pesantren yang berasrama (boarding school) menjadi salah satu pilihan yang tepat untuk melahirkan generasi yang hafal Al Qur’an serta dibekali dengan dasar – dasar ulumusyar’i.”>
@@ -21,10 +21,16 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
 <meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap4/bootstrap.min.css') }}">
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap4/bootstrap.min.css') }}">
 <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/main_styles.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('styles/responsive.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('styles/responsive.css') }}"> --}}
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<link href="https://demos.creative-tim.com/soft-ui-design-system/assets/css/nucleo-icons.css" rel="stylesheet" />
+<link href="https://demos.creative-tim.com/soft-ui-design-system/assets/css/nucleo-svg.css" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('frontpage/assets/css/theme.css') }}">
+<link rel="stylesheet" href="{{ asset('frontpage/assets/css/loopple/loopple.css') }}">

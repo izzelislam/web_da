@@ -69,7 +69,7 @@
         <hr>
       </div>
 
-      @if ($model)
+      @if (!empty($model))
         @if($model->instalment)
           <div class="card p-3 mb-3">
             <h4>
@@ -151,7 +151,7 @@
       </div>
       
       <button type="submit" formaction="{{ $route }}" class="btn app-btn-primary" >Simpan data</button>
-      @if ($model)
+      @if (!empty($model))
         <a href="{{ route('payment.index') }}"  class="btn text-white btn-info" >Lanjut ke pembayaran</a>
       @endif
     </form>
