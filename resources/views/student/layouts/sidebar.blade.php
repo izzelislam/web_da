@@ -20,14 +20,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('payment.index') }}">
-            <span class="nav-icon">
-              <i class="fa fa-money-bill"></i>
-            </span>
-            <span class="nav-link-text">Pembayaran</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="{{ route('student-biodata.create') }}">
             <span class="nav-icon">
               <i class="fa fa-user"></i>
@@ -44,11 +36,19 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('student-docs.create') }}">
+          <a class="nav-link" href="{{ route('qurban-saving.create') }}">
             <span class="nav-icon">
               <i class="fa fa-file"></i>
             </span>
-            <span class="nav-link-text">Dokumen</span>
+            <span class="nav-link-text">Tabungan Qurban</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('payment.index') }}">
+            <span class="nav-icon">
+              <i class="fa fa-money-bill"></i>
+            </span>
+            <span class="nav-link-text">Pembayaran</span>
           </a>
         </li>
         <li class="nav-item">

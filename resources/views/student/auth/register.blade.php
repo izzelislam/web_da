@@ -12,8 +12,30 @@
           <img width="100" class="my-2" src="{{ asset('images/component/logo.png') }}" alt="logo">
           <h2 class="auth-heading text-secondary text-center mb-5">Daftar</h2>
         </div> 
-        <form class="auth-form login-form" method="POST" action="{{ route("register.store") }}">
+        <form class="auth-form login-form" method="POST" action="{{ route("register.store") }}" enctype="multipart/form-data">
           @csrf    
+          <div class="email mb-3">
+            <label class="sr-only" for="name">Foto </label>
+            <input 
+              name="img" 
+              type="file" 
+              class="
+                form-control 
+                signin-email
+                @error("img")
+                  is-invalid
+                @enderror
+              " 
+            >
+            <i class="text-danger">* Foto resmi</i>
+            @error('img')
+              <div class="mt-1">
+                <small>
+                  <i><b class="text-danger">{{ $message }}</b></i>
+                </small>
+              </div>
+            @enderror
+          </div>
           <div class="email mb-3">
             <label class="sr-only" for="name">Nama</label>
             <input 
@@ -150,17 +172,17 @@
             <label class="sr-only" for="signin-password">Password</label>
             <input 
               id="signin-password" 
-              name="password" 
+              name="pwd" 
               type="password" 
               class="form-control signin-password
-              @error("name")
+              @error("pwd")
                 is-invalid
               @enderror
               " 
               placeholder="Password" 
               required="required"
             >
-            @error('password')
+            @error('pwd')
               <div class="mt-1">
                 <small>
                   <i><b class="text-danger">{{ $message }}</b></i>
@@ -170,7 +192,7 @@
           </div><!--//form-group-->
           @if ($school_year->status)
             <div class="text-center">
-              <button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">Register</button>
+              <button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">Daftar</button>
             </div>
           @endif
         </form>
@@ -179,6 +201,10 @@
             <button type="button" class="btn btn-secondary w-100  mx-auto disable">Pendaftaran Belum di buka</button>
           </div>
         @endif
+        <div class="text-center my-3"><i>atau sudah punya akun ?</i></div>
+        <div class="text-center">
+          <a href="{{ route('login.index') }}" class="btn btn-info w-100 text-white mx-auto">Masuk</a>
+        </div>
       </div>
     </div>
   </div>

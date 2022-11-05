@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticleSeeder::class);
         $this->call(GalerySeeder::class);
         $this->call(VideoSeeder::class);
+        $this->call(IndoRegionSeeder::class);
         // $this->call(BiodataSeeder::class);
         // $this->call(DocSeeder::class);
         // $this->call(FatherSeeder::class);

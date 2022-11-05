@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data['model'] = User::where('id',auth()->user()->id)->with('biodata', 'father', 'mother', 'doc')->first();
+        $data['model'] = User::where('id',auth()->user()->id)->with('biodata', 'ortu', 'payment', 'qurbanSaving')->first();
         // dd($data['model']->toArray());
         return view('student.dashboard.index', $data);
     }

@@ -39,7 +39,7 @@ class StudentAuthController extends Controller
         $authenticated = auth()->attempt($credentials, $request->has('is_remember'));
 
         if($authenticated){
-            return redirect()->intended('/student/dashboard');
+            return redirect()->intended('/student/biodata');
         }
 
         return redirect()->back()->with('error', 'Login gagal, email atau password salah');
@@ -58,13 +58,14 @@ class StudentAuthController extends Controller
     public function registerProcess(Request $request)
     {
         $request->validate([
+            'img'           => 'nullable|mimes:png,jpg,jpeg|max:2000',   
             'unit_id'       => 'required|exists:units,id',
             'name'          => 'required',
             'email'         => 'required|email|unique:users,email',
             'phone_number'  => 'required|unique:users,phone_number',
-            'password'      => 'required|min:6|max:12',
+            'pwd'      => 'required|min:6|max:12',
             'gender'        => 'required',
-            'nik'        => 'required|unique:users,nik'
+            'nik'           => 'required|unique:users,nik'
         ],[
             'gender.required'       => "jenis kelamin wajib di isi",
             'unit_id.required'      => "wajib memilih unit",
@@ -77,37 +78,63 @@ class StudentAuthController extends Controller
             'nik.unique'          => "Nik Sudah terdaftar",
             'nik.required' => "Nik telepon wajib di isi",
             'phone_number.unique'   => "Nomor telepon sudah terdaftar",
-            'password.required'     => "Password wajib di isi",
-            'password.min'          => "Password minimal 6 karakter",
-            'password.max'          => "Password maksimal 12 karakter",
+            'pwd.required'     => "Password wajib di isi",
+            'pwd.min'          => "Password minimal 6 karakter",
+            'pwd.max'          => "Password maksimal 12 karakter",
         ]);
 
-        $request['password']        = bcrypt(request('password'));
+        $request['password']        = bcrypt(request('pwd'));
         $request['image']           = '/dumy/avatar.jpg';
         $request['code']            = CodeGenerator(16);
         
         $year = SchoolYear::orderBy('year', 'desc')->first();
+        
         if ($year->status){
             $request['school_year_id']  = $year->id;
         }
+        
         if (!$year->status){
             return redirect()->route('login.index')->with('error', 'Pendaftaran Belum dibukak');
+        }
+
+        if ($request->file('img')){
+            $request['image'] = $this->uploadFile($request->file('img'));
         }
 
         User::create($request->all());
 
         $admins = Admin::all();
 
-        foreach ($admins as $admin) {
-            Mail::to($admin->email)->send(new Registrant);
+        // foreach ($admins as $admin) {
+        //     Mail::to($admin->email)->send(new Registrant);
+        // }
+
+        $credentials    = [
+            'email' => $request->email,
+            'password' => $request->pwd
+        ];
+        // dd($credentials);
+
+        $authenticated = auth()->attempt($credentials);
+
+        if($authenticated){
+            return redirect()->intended('/student/biodata');
         }
 
-        return redirect()->route('login.index')->with('success', 'berhasil membuat akun, silahkan mausk mengunakan email dan password yang sudah terdaftar');
+        return redirect()->back()->with('error', 'gagal mendaftar');
+        // return redirect()->route('login.index')->with('success', 'berhasil membuat akun, silahkan mausk mengunakan email dan password yang sudah terdaftar');
     }
 
     public function logout()
     {
         auth()->guard('web')->logout();
         return redirect()->route("login.index")->with('success', 'Berhasil keluar');
+    }
+
+    public function uploadFile($file)
+    {
+        $fileName = time().bin2hex(random_bytes(5)). '.' . $file->getClientOriginalExtension();
+        $file->move('images/profiles', $fileName);
+        return 'images/profiles/'. $fileName;
     }
 }

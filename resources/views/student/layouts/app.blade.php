@@ -53,6 +53,30 @@
 
     @include('student.layouts.script')
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let er = "{{ session('error') }}"
+        let ss = "{{ session('success') }}"
+        
+        if (er){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: er,
+                showConfirmButton: false,
+                timer: 3500
+            })
+        }
+        if (ss){
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: ss,
+                showConfirmButton: false,
+                timer: 3500
+            })
+        }
+    </script>
     @stack('addon-script')
 
     @livewireScripts

@@ -11,7 +11,7 @@ class Mother extends Model
 
     protected $fillable = [
         'user_id',
-        'name',
+        'nik',
         'birth_date',
         'place_birth',
         'profession',

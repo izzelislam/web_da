@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fathers', function (Blueprint $table) {
+        Schema::create('qurban_savings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('name');
-            $table->string('nik');
-            $table->string('birth_date');
-            $table->string('place_birth');
-            $table->string('profession');
-            $table->string('last_education');
-            $table->integer('income');
+            $table->boolean('is_accept');
+            $table->string('qurban');
+            $table->string('qurban_type');
+            $table->string('instalment');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fathers');
+        Schema::dropIfExists('qurban_savings');
     }
 };

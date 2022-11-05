@@ -11,102 +11,135 @@
   <x-admin.card title="Data Ayah" md="8" lg="8">
     <form class="settings-form" method="POST">
       @csrf
-      @isset($father_model)
+      @isset($model)
         @method('PUT')
       @endisset
 
       <x-admin.input
-        label="Nama"
+        label="Nama Ayah"
         name="father_name"
-        value="{{ $father_model->name ?? '' }}"
+        value="{{ $model->father_name ?? '' }}"
+      />
+
+      <x-admin.input
+        label="NIK Ayah"
+        type="number"
+        name="father_nik"
+        value="{{ $model->father_nik ?? '' }}"
       />
 
 
       <x-admin.input
-        label="Tanggal Lahir"
+        label="Tanggal Lahir Ayah"
         name="father_birth_date"
         type="date"
-        value="{{ $father_model->birth_date ?? '' }}"
+        value="{{ $model->father_birth_date ?? '' }}"
       />
 
       <x-admin.input
-        label="Tempat Lahir"
+        label="Tempat Lahir Ayah"
         name="father_place_birth"
-        value="{{ $father_model->place_birth ?? '' }}"
+        value="{{ $model->father_place_birth ?? '' }}"
       />
 
       <x-admin.input
-        label="Pekerjaan"
+        label="Pekerjaan Ayah"
         name="father_profession"
-        value="{{ $father_model->profession ?? '' }}"
+        value="{{ $model->father_profession ?? '' }}"
       />
 
       <x-admin.input
         label="Pendidikan Terakhir"
         name="father_last_education"
-        value="{{ $father_model->last_education ?? '' }}"
+        value="{{ $model->father_last_education ?? '' }}"
       />
 
+      <div class="mb-3 ">
+        <label for="setting-input-2" class="form-label">Pendapatan per Bulan Ayah</label>
+        <select name="father_income" id="" class="form-control @error('father_income')
+          is-invalid
+        @enderror">
+          @if(!empty($model->father_income))
+            <option value="{{ $model->father_income }}">{{ $model->father_income }}</option>
+          @endif
+          <option> -- pilih penghasilan ayah --</option>
+          <option value="Rp. 1.000.000 - Rp. 2.000.000">Rp. 1.000.000 - Rp. 2.000.000</option>
+          <option value="Rp. 2.000.000 - Rp. 3.000.000">Rp. 2.000.000 - Rp. 3.000.000</option>
+          <option value="Lebih dari Rp. 3.000.000">Lebih dari Rp. 3.000.000</option>
+        </select>
+        @error('father_income')
+          <div class="mt-1">
+            <small>
+              <i><b class="text-danger">{{ $message }}</b></i>
+            </small>
+          </div>
+        @enderror
+      </div>
+
+      {{-- --------------------------------------------------- mother -----------}}
+
       <x-admin.input
-        label="Pendapatan per Bulan"
-        name="father_income"
-        type="number"
-        value="{{ $father_model->income ?? '' }}"
-      />
-
-      <button type="submit" formaction="{{ $father_route }}" class="btn app-btn-primary" >Save Changes</button>
-    </form>
-  </x-admin.card>
-
-  <div class="my-4"></div>
-
-  <x-admin.card title="Data Ibu" md="8" lg="8">
-    <form class="settings-form" method="POST" >
-      @csrf
-      @isset($mother_model)
-        @method('PUT')
-      @endisset
-
-      <x-admin.input
-        label="Nama"
+        label="Nama Ibu"
         name="mother_name"
-        value="{{ $mother_model->name ?? '' }}"
+        value="{{ $model->mother_name ?? '' }}"
+      />
+
+      <x-admin.input
+        label="NIK Ibu"
+        name="mother_nik"
+        type="number"
+        value="{{ $model->mother_nik ?? '' }}"
       />
 
 
       <x-admin.input
-        label="Tanggal Lahir"
+        label="Tanggal Lahir Ibu"
         name="mother_birth_date"
         type="date"
-        value="{{ $mother_model->birth_date ?? '' }}"
+        value="{{ $model->mother_birth_date ?? '' }}"
       />
 
       <x-admin.input
-        label="Tempat Lahir"
+        label="Tempat Lahir Ibu"
         name="mother_place_birth"
-        value="{{ $mother_model->place_birth ?? '' }}"
+        value="{{ $model->mother_place_birth ?? '' }}"
       />
 
       <x-admin.input
-        label="Pekerjaan"
+        label="Pekerjaan Ibu"
         name="mother_profession"
-        value="{{ $mother_model->profession ?? '' }}"
+        value="{{ $model->mother_profession ?? '' }}"
       />
 
       <x-admin.input
-        label="Pendidikan Terakhir"
+        label="Pendidikan Terakhir Ibu"
         name="mother_last_education"
-        value="{{ $mother_model->last_education ?? '' }}"
+        value="{{ $model->mother_last_education ?? '' }}"
       />
 
-      <x-admin.input
-        label="Pendapatan per Bulan"
-        name="mother_income"
-        type="number"
-        value="{{ $mother_model->income ?? '' }}"
-      />
+      <div class="mb-3 ">
+        <label for="setting-input-2" class="form-label">Pendapatan per Bulan Ibu</label>
+        <select name="mother_income" id="" class="form-control @error('mother_income')
+          is-invalid
+        @enderror">
+          @if(!empty($model->mother_income))
+            <option value="{{ $model->mother_income }}">{{ $model->mother_income }}</option>
+          @endif
+          <option> -- pilih penghasilan Ibu --</option>
+          <option value="Rp. 1.000.000 - Rp. 2.000.000">Rp. 1.000.000 - Rp. 2.000.000</option>
+          <option value="Rp. 2.000.000 - Rp. 3.000.000">Rp. 2.000.000 - Rp. 3.000.000</option>
+          <option value="Lebih dari Rp. 3.000.000">Lebih dari Rp. 3.000.000</option>
+        </select>
+        @error('mother_income')
+          <div class="mt-1">
+            <small>
+              <i><b class="text-danger">{{ $message }}</b></i>
+            </small>
+          </div>
+        @enderror
+      </div>
 
-      <button type="submit" formaction="{{ $mother_route }}" class="btn app-btn-primary" >Save Changes</button>
+      <button type="submit" formaction="{{ $parent_route }}" class="btn app-btn-primary" >Simpan dan lanjut mengisi data nasabah qurban</button>
     </form>
   </x-admin.card>
 @endsection

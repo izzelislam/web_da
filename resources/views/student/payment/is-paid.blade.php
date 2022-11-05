@@ -13,13 +13,16 @@
         <img src="{{ asset('/images/component/paid.png') }}" alt="" class="img-fluid">
         @if (!empty($model))
           <div class="my-5 text-center">
-            <h4 class="text-secondary">Menunggu konfirmasi dari admin</h4>
+            <h4 class="text-secondary">Bukti pembayaran berhasi di unggah silakan konfirmasi pembayaran</h4>
             @if (!empty(SettingData()->wa_1))
-              <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_1 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn btn-success text-white mt-3">hubunggi admin</a>
+              <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_1 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn btn-success text-white mt-3">konfirmasi admin 1</a>
             @endif
             @if (!empty(SettingData()->wa_2))
               <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_2 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn btn-success text-white mt-3">hubunggi admin 2</a>
             @endif
+            <div class="my-3">
+              jika tombol diatas tidak berfungsi silakan hubunggi admin di {{ settingData()->wa_1 ?? '' }} atau {{ settingData()->wa_2 ?? '' }}
+            </div>
           </div>
 
         @endif

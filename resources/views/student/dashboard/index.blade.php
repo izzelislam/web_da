@@ -61,52 +61,6 @@
                   
             </div><!--//col-->
             <div class="col-auto">
-              <h4 class="app-card-title">Pembayaran</h4>
-            </div><!--//col-->
-          </div><!--//row-->
-      </div><!--//app-card-header-->
-      <div class="app-card-body px-4">
-        
-        <div class="intro">
-          Status : 
-          @if (empty($model->payment))
-            <span class="badge bg-danger">Belum Lunas</span>
-          @endif
-          @isset($model->payment)
-            @if (!empty($model->payment->status === 0))
-              <span class="badge bg-warning">Menunggu konfirmasi</span>
-            @endif
-            @if (!empty($model->payment->status === 1))
-              <span class="badge bg-success">Lunas</span>
-            @endif
-          @endisset
-        </div>
-      </div><!--//app-card-body-->
-      <div class="app-card-footer p-4 mt-auto">
-        @if (empty($model->payment))
-          <a class="btn app-btn-secondary" href="{{ route("student-biodata.create") }}">Upload Bukti Pembayaran</a>
-        @endif
-        @if (!empty($model->payment) && $model->payment->status === 0)
-          <a target="blank" href="https://api.whatsapp.com/send/?phone={{ settingData()->wa_1 }}&text=Saya+{{ Auth::user()->name }}+inggin+konfirmasi+biaya+pendaftaran+link+bukti+&app_absent=0" class="btn app-btn-secondary" >konfirmasi pembayaran</a>
-        @endif
-      </div><!--//app-card-footer-->
-    </div><!--//app-card-->
-  </div>
-
-  <div class="col-12 col-lg-3">
-    <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
-      <div class="app-card-header p-3 border-bottom-0">
-          <div class="row align-items-center gx-3">
-            <div class="col-auto">
-              <div class="app-icon-holder">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
-              <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
-              </svg>
-            </div><!--//icon-holder-->
-                  
-            </div><!--//col-->
-            <div class="col-auto">
               <h4 class="app-card-title">Biodata Diri</h4>
             </div><!--//col-->
           </div><!--//row-->
@@ -156,26 +110,113 @@
         
         <div class="intro">
           Status :
-          @if (empty($model->father) || empty($model->mother))
+          @if (empty($model->ortu))
             <span class="badge bg-danger">Belum Lengkap</span>
           @endif
-          @if (!empty($model->father) && !empty($model->mother))
+          @if (!empty($model->ortu))
             <span class="badge bg-success">Lengkap</span>
           @endif
         </div>
       </div><!--//app-card-body-->
       <div class="app-card-footer p-4 mt-auto">
-        @if (empty($model->father) || empty($model->mother))
-          <a class="btn app-btn-secondary" href="{{ route('student-parent.create') }}">Isi Data Ortu</a>
+        @if (empty($model->ortu) )
+          <a class="btn app-btn-secondary" href="{{ route('student-parent.create') }}">Isi Data Orangtua</a>
         @endif
-        @if (!empty($model->father) && !empty($model->mother))
-          <a class="btn app-btn-secondary" href="{{ route('student-parent.create') }}">Edit Data Ortu</a>
+        @if (!empty($model->ortu))
+          <a class="btn app-btn-secondary" href="{{ route('student-parent.create') }}">Edit Data Orangtua</a>
         @endif
       </div><!--//app-card-footer-->
     </div><!--//app-card-->
   </div>
 
   <div class="col-12 col-lg-3">
+    <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
+      <div class="app-card-header p-3 border-bottom-0">
+          <div class="row align-items-center gx-3">
+            <div class="col-auto">
+              <div class="app-icon-holder">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+              <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+            </div><!--//icon-holder-->
+                  
+            </div><!--//col-->
+            <div class="col-auto">
+              <h4 class="app-card-title">Akad Tabungan Qurban</h4>
+            </div><!--//col-->
+          </div><!--//row-->
+      </div><!--//app-card-header-->
+      <div class="app-card-body px-4">
+        
+        <div class="intro">
+          Status : 
+          @if (empty($model->qurbanSaving))
+            <span class="badge bg-danger">Belum Lengkap</span>
+          @endif
+          @if (!empty($model->qurbanSaving))
+            <span class="badge bg-success">Lengkap</span>
+          @endif
+        </div>
+      </div><!--//app-card-body-->
+      <div class="app-card-footer p-4 mt-auto">
+        @if (empty($model->qurbanSaving))
+          <a class="btn app-btn-secondary" href="{{ route('qurban-saving.create') }}">Isi Biodata</a>
+        @endif
+        @if (!empty($model->qurbanSaving))
+          <a class="btn app-btn-secondary" href="{{ route("qurban-saving.create") }}">Edit Biodata</a>
+        @endif
+      </div><!--//app-card-footer-->
+    </div><!--//app-card-->
+  </div>
+
+  <div class="col-12 col-lg-3">
+    <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
+      <div class="app-card-header p-3 border-bottom-0">
+          <div class="row align-items-center gx-3">
+            <div class="col-auto">
+              <div class="app-icon-holder">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+              <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+              </svg>
+            </div><!--//icon-holder-->
+                  
+            </div><!--//col-->
+            <div class="col-auto">
+              <h4 class="app-card-title">Pembayaran</h4>
+            </div><!--//col-->
+          </div><!--//row-->
+      </div><!--//app-card-header-->
+      <div class="app-card-body px-4">
+        
+        <div class="intro">
+          Status : 
+          @if (empty($model->payment))
+            <span class="badge bg-danger">Belum Lunas</span>
+          @endif
+          @isset($model->payment)
+            @if (!empty($model->payment->status === 0))
+              <span class="badge bg-warning">Menunggu konfirmasi</span>
+            @endif
+            @if (!empty($model->payment->status === 1))
+              <span class="badge bg-success">Lunas</span>
+            @endif
+          @endisset
+        </div>
+      </div><!--//app-card-body-->
+      <div class="app-card-footer p-4 mt-auto">
+        @if (empty($model->payment))
+          <a class="btn app-btn-secondary" href="{{ route("student-biodata.create") }}">Upload Bukti Pembayaran</a>
+        @endif
+        @if (!empty($model->payment) && $model->payment->status === 0)
+          <a target="blank" href="{{ route('payment-redirect') }}" class="btn app-btn-secondary" >konfirmasi pembayaran</a>
+        @endif
+      </div><!--//app-card-footer-->
+    </div><!--//app-card-->
+  </div>
+
+  {{-- <div class="col-12 col-lg-3">
     <div class="app-card app-card-basic d-flex flex-column align-items-start shadow-sm">
       <div class="app-card-header p-3 border-bottom-0">
           <div class="row align-items-center gx-3">
@@ -214,7 +255,7 @@
         @endif
       </div><!--//app-card-footer-->
     </div><!--//app-card-->
-  </div>
+  </div> --}}
 
 </div>
 @endsection

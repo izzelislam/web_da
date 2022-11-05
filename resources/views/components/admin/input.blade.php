@@ -1,4 +1,4 @@
-@props(['label', 'name', 'value', 'placeholder' => '', 'type' => 'text'])
+@props(['label', 'name', 'value', 'placeholder' => '', 'type' => 'text', 'note'])
 
 <div class="mb-3">
   <label for="setting-input-2" class="form-label">{{ $label }}</label>
@@ -13,6 +13,7 @@
     placeholder="{{ $placeholder }}"  
     value="{{ old($name, $value ?? null) }}"  
   >
+  <small><i>{{ $note ?? '' }}</i></small>
   @error($name)
     <div class="mt-1">
       <small>

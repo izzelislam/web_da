@@ -7,6 +7,7 @@ use App\Http\Controllers\FrontPage\DocController;
 use App\Http\Controllers\FrontPage\ParentController;
 use App\Http\Controllers\FrontPage\PaymentController;
 use App\Http\Controllers\FrontPage\ProfileController;
+use App\Http\Controllers\FrontPage\QurbanSavingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -21,29 +22,34 @@ Route::post('/logout', [StudentAuthController::class, 'logout'])->name('student.
 Route::prefix('/student')->middleware(['auth:web', 'student'])->group(function(){
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('frontpage.dashboard');
 
-  Route::get('/payment-alert', [PaymentController::class, 'isPaid'])->name('payment-redirect');
-
-  Route::middleware(['ispaid'])->group(function(){
-    Route::get('/biodata', [BiodataController::class, 'create'])->name('student-biodata.create');
-    Route::post('/biodata', [BiodataController::class, 'store'])->name('student-biodata.store');
-    Route::put('/biodata/update', [BiodataController::class, 'update'])->name('student-biodata.update');
-    
-    Route::get('/parent', [ParentController::class, 'create'])->name('student-parent.create');
-    Route::post('/father', [ParentController::class, 'fatherStore'])->name('student-father.store');
-    Route::post('/mother', [ParentController::class, 'motherStore'])->name('student-mother.store');
-    Route::put('/father/update', [ParentController::class, 'fatherUpdate'])->name('student-father.update');
-    Route::put('/mother/update', [ParentController::class, 'motherUpdate'])->name('student-mother.update');
-    
-    Route::get('/docs', [DocController::class, 'create'])->name('student-docs.create');
-    Route::post('/docs', [DocController::class, 'store'])->name('student-docs.store');
-    // Route::get('/docs/edit', [DocController::class, 'edit'])->name('student-docs.edit');
-    // Route::put('/docs/update', [DocController::class, 'update'])->name('student-docs.update');
+  Route::get('/biodata', [BiodataController::class, 'create'])->name('student-biodata.create');
+  Route::post('/biodata', [BiodataController::class, 'store'])->name('student-biodata.store');
+  Route::put('/biodata/update', [BiodataController::class, 'update'])->name('student-biodata.update');
   
-    Route::put('/payment', [PaymentController::class, 'update'])->name('payment.update');
-  });
+  Route::get('/parent', [ParentController::class, 'create'])->name('student-parent.create');
+  Route::post('/parent', [ParentController::class, 'store'])->name('student-parent.store');
+  Route::put('/parent/update', [ParentController::class, 'update'])->name('student-parent.update');
+  
+  Route::get('/docs', [DocController::class, 'create'])->name('student-docs.create');
+  Route::post('/docs', [DocController::class, 'store'])->name('student-docs.store');
+  // Route::get('/docs/edit', [DocController::class, 'edit'])->name('student-docs.edit');
+  // Route::put('/docs/update', [DocController::class, 'update'])->name('student-docs.update');
+
+  // Route::middleware(['ispaid'])->group(function(){
+  // });
+
+  Route::get('/qurban-saving', [QurbanSavingController::class, 'create'])->name('qurban-saving.create');
+  Route::post('/qurban-saving', [QurbanSavingController::class, 'store'])->name('qurban-saving.store');
+  Route::put('/qurban-update', [QurbanSavingController::class, 'update'])->name('qurban-saving.update');
+  
+  Route::get('/ortu', [QurbanSavingController::class, 'create'])->name('qurban-saving.create');
+  Route::post('/ortu', [QurbanSavingController::class, 'store'])->name('qurban-saving.store');
+  Route::put('/ortu-update', [QurbanSavingController::class, 'update'])->name('qurban-saving.update');
   
   Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
   Route::post('/payment', [PaymentController::class, 'store'])->name('payment.store');
+  Route::put('/payment', [PaymentController::class, 'update'])->name('payment.update');
+  Route::get('/payment-alert', [PaymentController::class, 'isPaid'])->name('payment-redirect');
   
   Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('student-profile.edit');
   Route::put('/profile/update', [ProfileController::class, 'update'])->name('student-profile.update');

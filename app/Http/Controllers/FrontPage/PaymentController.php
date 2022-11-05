@@ -16,6 +16,11 @@ class PaymentController extends Controller
     public function index()
     {
         $data['route'] = route('payment.store');
+
+        $model = Payment::where('user_id', auth()->user()->id)->first();
+        if (!empty($model)){
+            $data['model'] = $model;
+        }
         return view('student.payment.form', $data);
     }
 
@@ -33,7 +38,7 @@ class PaymentController extends Controller
             $this->deleteFile($payment->img);
             $request['img']     = $this->uploadFile($request->file('image'));
             $payment->update($request->all());
-            return redirect()->back()->with('error', 'pembayaran sudah terkonfirmasi');
+            return redirect()->back()->with('error', 'berhasil di perbarui');
         }
         
         $request['img']     = $this->uploadFile($request->file('image'));
@@ -50,7 +55,7 @@ class PaymentController extends Controller
             Mail::to($admin->email)->send(new PaymentMail);
         }
 
-        return redirect()->back()->with('success', 'berhasil mengungah bukti pembayaran');
+        return redirect()->route('payment-redirect')->with('success', 'berhasil mengungah bukti pembayaran');
     }
 
     public function update(Request $request)

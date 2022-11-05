@@ -24,25 +24,40 @@ class ParentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'              => 'required',
-            'birth_date'        => 'required',
-            'place_birth'       => 'required',
-            'profession'        => 'required',
-            'last_education'    => 'required',
-            'income'            => 'required|numeric|digits_between:1,12',
+            'father_name'           => 'required',
+            'father_nik'            => 'required',
+            'father_birth_date'     => 'required',
+            'father_place_birth'    => 'required',
+            'father_profession'     => 'required',
+            'father_last_education' => 'required',
+            'father_income'         => 'required',
+            'mother_name'           => 'required',
+            'mother_nik'            => 'required',
+            'mother_birth_date'     => 'required',
+            'mother_place_birth'    => 'required',
+            'mother_profession'     => 'required',
+            'mother_last_education' => 'required',
+            'mother_income'         => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.reuired'              => 'nama orang tua wajib di isi',
-            'birth_date.required'        => 'tanggal lahir wajib di isi',
-            'place_birth.required'       => 'tempat lahir wajib di isi',
-            'profession.required'        => 'profesi wajib di isi',
-            'last_education.required'    => 'pendidikan terakhir wajib di isi',
-            'income.required'            => 'penghasilan wajib di isi',
-            'income.digits_between'            => 'penghasilan wajib antara 1 sampai 12 digit',
+            'father_name.required' => ' Nama ayah wajib di isi',
+            'father_nik.required' => 'NIK ayah wajib di isi',
+            'father_birth_date.required' => 'Tanggal lahir ayah wajib di isi',
+            'father_place_birth.required' => 'Tempatlahir ayah wajib di isi',
+            'father_profession.required' => 'Profesi ayah wajib di isi',
+            'father_last_education.required' => 'Pendidikan terakhir ayah wajib di isi',
+            'father_income.required' => 'Pendapatan perbulan ayah wajib di isi',
+            'mother_name.required' => 'Nama ibu wajib di isi',
+            'mother_nik.required' => 'NIK ibu wajib di isi',
+            'mother_birth_date.required' => 'Tanggal lahir ibu wajib di isi',
+            'mother_place_birth.required' => 'Tempat lahir ibu wajib di isi',
+            'mother_profession.required' => 'Profesi ibu wajib di isi',
+            'mother_last_education.required' => 'Pendidikan terakhir ibu wajib di isi',
+            'mother_income.required' => 'Pendapatan perbulan ibu wajib di isi',
         ];
     }
 }

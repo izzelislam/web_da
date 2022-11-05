@@ -54,21 +54,6 @@ class User extends Authenticatable
         return $this->belongsTo(Unit::class);
     }
 
-    public function doc()
-    {
-        return $this->hasOne(Doc::class);
-    }
-
-    public function father()
-    {
-        return $this->hasOne(Father::class);
-    }
-
-    public function mother()
-    {
-        return $this->hasOne(Mother::class);
-    }
-
     public function biodata()
     {
         return $this->hasOne(Biodata::class);
@@ -84,13 +69,21 @@ class User extends Authenticatable
         return $this->hasOne(Payment::class);
     }
 
+    public function ortu()
+    {
+        return $this->hasOne(Ortu::class);
+    }
+
+    public function qurbanSaving()
+    {
+        return $this->hasOne(QurbanSaving::class);
+    }
+
     protected static function boot() {
         parent::boot();
         
         static::deleting(function($check) {
-            $check->doc()->delete();
-            $check->father()->delete();
-            $check->mother()->delete();
+            $check->ortu()->delete();
             $check->biodata()->delete();
             $check->payment()->delete();
         });
