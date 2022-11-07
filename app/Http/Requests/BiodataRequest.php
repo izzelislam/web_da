@@ -31,7 +31,7 @@ class BiodataRequest extends FormRequest
             'goals'              => 'required',
             'brth_date'         => 'required',
             'brth_place'        => 'required',
-            'nisn'              => 'required',
+            'nisn'              => 'nullable',
             'no_akta'              => 'required',
             'brothers'        => 'required',
             'order_of_birth'    => 'required',

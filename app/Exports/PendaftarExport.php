@@ -73,7 +73,7 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
         $school_year = SchoolYear::where('status', 1)->orderBy('year', 'desc')->first();
         $users =     User::query();
 
-        $users->with(['unit', 'biodata', 'schoolyear', 'father', 'mother']);
+        $users->with(['unit', 'biodata', 'schoolyear', 'ortu', 'qurbanSaving']);
 
         if (isset(request()->unit)){
             $users->whereHas('unit', function ($query) {
@@ -126,18 +126,20 @@ class PendaftarExport implements FromQuery, WithHeadings, WithMapping, WithStyle
             $user->biodata->disease_present ?? '',
             $user->biodata->disease_once ?? '',
             $user->biodata->prev_school ?? '',
-            $user->father->name ?? '',
-            $user->father->birth_date ?? '',
-            $user->father->place_birth ?? '',
-            $user->father->profession ?? '',
-            $user->father->last_education ?? '',
-            $user->father->income ?? '',
-            $user->mother->name ?? '',
-            $user->mother->birth_date ?? '',
-            $user->mother->place_birth ?? '',
-            $user->mother->profession ?? '',
-            $user->mother->last_education ?? '',
-            $user->mother->income ?? '',
+            $user->ortu->father_name ?? '',
+            $user->ortu->father_nik ?? '',
+            $user->ortu->father_birth_date ?? '',
+            $user->ortu->father_place_birth ?? '',
+            $user->ortu->father_profession ?? '',
+            $user->ortu->father_last_education ?? '',
+            $user->ortu->father_income ?? '',
+            $user->ortu->mother_name ?? '',
+            $user->ortu->mother_nik ?? '',
+            $user->ortu->mother_birth_date ?? '',
+            $user->ortu->mother_place_birth ?? '',
+            $user->ortu->mother_profession ?? '',
+            $user->ortu->mother_last_education ?? '',
+            $user->ortu->mother_income ?? '',
         ];
     }
 }

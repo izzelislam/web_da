@@ -49,11 +49,11 @@ class PaymentController extends Controller
         Payment::create($request->all());
 
 
-        $admins = Admin::all();
+        // $admins = Admin::all();
 
-        foreach ($admins as $admin) {
-            Mail::to($admin->email)->send(new PaymentMail);
-        }
+        // foreach ($admins as $admin) {
+        //     Mail::to($admin->email)->send(new PaymentMail);
+        // }
 
         return redirect()->route('payment-redirect')->with('success', 'berhasil mengungah bukti pembayaran');
     }

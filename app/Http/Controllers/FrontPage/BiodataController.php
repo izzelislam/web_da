@@ -37,6 +37,10 @@ class BiodataController extends Controller
 
         $validated              = $request->validated();
         $validated['user_id']   = auth()->user()->id;
+
+        if (empty($validated['nisn'])){
+            $validated['nisn'] = '';
+        }
         
         Biodata::create($validated);
         return redirect()->route('student-parent.create')->with('success', 'berhasil menambahkan biodata diri');
