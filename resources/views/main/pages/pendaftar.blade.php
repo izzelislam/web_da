@@ -25,7 +25,7 @@
         <div class="card-header">
           <h5>Tahun Ajaran : {{ $pendaftar->year }}</h5>
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
           <table
             id="datatable{{ $index }}"
             class="table datatable"
