@@ -48,9 +48,9 @@
                   <td>{{ $user->biodata->fullname ?? '' }}</td>
                   <td>{{ $user->unit->name ?? '' }}</td>
                   <td>{{ $user->biodata->prev_school ?? '' }}</td>
-                  <td>{{ $user->biodata->district ?? '' }}</td>
-                  <td>{{ $user->biodata->regency ?? '' }}</td>
-                  <td>{{ $user->biodata->province ?? '' }}</td>
+                  <td>{{ $user->biodata->district->name ?? '' }}</td>
+                  <td>{{ $user->biodata->regency->name ?? '' }}</td>
+                  <td>{{ $user->biodata->province->name ?? '' }}</td>
                 </tr>
               @endforeach
             </tbody>

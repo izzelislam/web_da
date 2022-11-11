@@ -344,7 +344,7 @@
 						<div class="col">
 							<div class="row">
 								<div class="col-md-6 col-lg-6">
-									{{ $content[3]->content }}
+									{!! $content[3]->content !!}
 								</div>
 								<div class="col-md-6 col-lg-6">
 									<div class="">
