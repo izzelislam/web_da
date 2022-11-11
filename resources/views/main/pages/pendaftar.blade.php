@@ -83,7 +83,9 @@
   <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
   <script>
     $(document).ready(function () {
-      $('.datatable').DataTable();
+      $('.datatable').DataTable({
+        responsive: true
+      });
     });
   </script>
 @endpush
