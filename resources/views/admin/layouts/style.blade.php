@@ -1,4 +1,4 @@
-<title>Admin - Daarul Atqiyaa'</title>
+<title>Daarul Atqiyaa'</title>
     
 <!-- Meta -->
 <meta charset="utf-8">
