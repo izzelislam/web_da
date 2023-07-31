@@ -9,6 +9,7 @@ use App\Models\SchoolYear;
 use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 
 class StudentAuthController extends Controller
@@ -63,7 +64,6 @@ class StudentAuthController extends Controller
             'name'          => 'required',
             'email'         => 'required|email|unique:users,email',
             'phone_number'  => 'required|unique:users,phone_number',
-            'pwd'      => 'required|min:6|max:12',
             'gender'        => 'required',
             'nik'           => 'required|unique:users,nik'
         ],[
@@ -83,7 +83,7 @@ class StudentAuthController extends Controller
             'pwd.max'          => "Password maksimal 12 karakter",
         ]);
 
-        $request['password']        = bcrypt(request('pwd'));
+        $request['password']        = bcrypt('123456');
         $request['image']           = '/dumy/avatar.jpg';
         $request['code']            = CodeGenerator(16);
         
@@ -94,34 +94,38 @@ class StudentAuthController extends Controller
         }
         
         if (!$year->status){
-            return redirect()->route('login.index')->with('error', 'Pendaftaran Belum dibukak');
+            return redirect()->back()->with('error', 'Pendaftaran Belum dibuka');
         }
 
         if ($request->file('img')){
             $request['image'] = $this->uploadFile($request->file('img'));
         }
 
+        if ($request)
+
         User::create($request->all());
 
-        $admins = Admin::all();
+        return redirect()->route('student-biodata.create', Crypt::encryptString($request->nik));
+
+        // $admins = Admin::all();
 
         // foreach ($admins as $admin) {
         //     Mail::to($admin->email)->send(new Registrant);
         // }
 
-        $credentials    = [
-            'email' => $request->email,
-            'password' => $request->pwd
-        ];
+        // $credentials    = [
+        //     'email' => $request->email,
+        //     'password' => $request->pwd
+        // ];
         // dd($credentials);
 
-        $authenticated = auth()->attempt($credentials);
+        // $authenticated = auth()->attempt($credentials);
 
-        if($authenticated){
-            return redirect()->intended('/student/biodata');
-        }
+        // if($authenticated){
+        //     return redirect()->intended('/student/biodata');
+        // }
 
-        return redirect()->back()->with('error', 'gagal mendaftar');
+        // return redirect()->back()->with('error', 'gagal mendaftar');
         // return redirect()->route('login.index')->with('success', 'berhasil membuat akun, silahkan mausk mengunakan email dan password yang sudah terdaftar');
     }
 

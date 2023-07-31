@@ -13,7 +13,8 @@ class FatherRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->guard('web')->check();
+        // return auth()->guard('web')->check();
+        return true;
     }
 
     /**
@@ -29,7 +30,7 @@ class FatherRequest extends FormRequest
             'father_place_birth'       => 'required',
             'father_profession'        => 'required',
             'father_last_education'    => 'required',
-            'father_income'            => 'required|numeric|digits_between:1,12',
+            'father_income'            => 'required',
         ];
     }
 

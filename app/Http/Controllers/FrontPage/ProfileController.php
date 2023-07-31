@@ -6,9 +6,24 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UploadPhotoRequest;
+use Illuminate\Support\Facades\Crypt;
 
 class ProfileController extends Controller
 {
+    public function index() {
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
+
+        $data['model'] = USer::where('id', $user->id)->with('biodata.district', 'biodata.regency', 'biodata.province', 'ortu', 'qurbanSaving', 'unit', 'schoolYear', 'payment')->first();
+        return view('student.profile.form', $data);
+    }
+    
     public function edit()
     {
         if (!auth()->guard('web')->check()){return abort(403);}

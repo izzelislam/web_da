@@ -1,11 +1,11 @@
 @extends('student.layouts.app')
 
-@section('page-title')
+{{-- @section('page-title')
   <x-admin.page-title 
     title="Biodata" 
     previous="{{ true }}"  
   />
-@endsection
+@endsection --}}
 
 @section('content')
   <x-admin.card md="8" lg="8">
@@ -442,8 +442,10 @@
           </div>
         @enderror
       </div>
-
-      <button type="submit" class="btn app-btn-primary" >Simpan dan lanjut Mengisi Biodata Orangtua</button>
+      <div class="d-flex justify-content-between">
+        <a href="{{ route('home-page', ['ticket' => request()->ticket]) }}" class="btn btn-warning">Kembali ke halam sebelunya </a>
+        <button type="submit" class="btn btn-info" >Simpan dan lanjut Mengisi Biodata Orangtua</button>
+      </div>
     </form>
   </x-admin.card>
 @endsection

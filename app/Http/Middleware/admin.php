@@ -16,6 +16,7 @@ class admin
      */
     public function handle(Request $request, Closure $next)
     {
+        // dd(auth()->guard('admin')->check());
         if (auth()->guard('admin')->check()) {
             return $next($request);
         }

@@ -1,14 +1,14 @@
 @extends('student.layouts.app')
 
-@section('page-title')
+{{-- @section('page-title')
   <x-admin.page-title 
     title="Data Orang Tua Wali" 
     previous="{{ true }}"  
   />
-@endsection
+@endsection --}}
 
 @section('content')
-  <x-admin.card title="Data Ayah" md="8" lg="8">
+  <x-admin.card title="Data Orang Tua" md="8" lg="8">
     <form class="settings-form" method="POST">
       @csrf
       @isset($model)
@@ -139,7 +139,11 @@
         @enderror
       </div>
 
-      <button type="submit" formaction="{{ $parent_route }}" class="btn app-btn-primary" >Simpan dan lanjut mengisi data nasabah qurban</button>
+      <div class="d-flex justify-content-between">
+        <a href="{{ route('student-biodata.create', ['ticket' => request()->ticket]) }}" class="btn btn-warning">Kembali ke halam sebelunya </a>
+        {{-- <button type="submit" class="btn btn-info" >Simpan dan lanjut Mengisi Biodata Orangtua</button> --}}
+        <button type="submit" formaction="{{ $parent_route }}" class="btn btn-info" >Simpan dan lanjut mengisi data nasabah qurban</button>
+      </div>
     </form>
   </x-admin.card>
 @endsection

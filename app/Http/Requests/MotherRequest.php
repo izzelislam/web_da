@@ -13,7 +13,8 @@ class MotherRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->guard('web')->check();
+        // return auth()->guard('web')->check();
+        return true;
     }
 
     /**
@@ -29,7 +30,7 @@ class MotherRequest extends FormRequest
             'mother_place_birth'       => 'required',
             'mother_profession'        => 'required',
             'mother_last_education'    => 'required',
-            'mother_income'            => 'required|numeric|digits_between:1,12',
+            'mother_income'            => 'required',
         ];
     }
 

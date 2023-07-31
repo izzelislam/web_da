@@ -9,45 +9,84 @@ use App\Mail\PaymentMail;
 use App\Models\Admin;
 use App\Models\Payment;
 use App\Models\User;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
     public function index()
     {
-        $data['route'] = route('payment.store');
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
 
-        $model = Payment::where('user_id', auth()->user()->id)->first();
+        $data['route'] = route('student-payment.store', $ticket);
+
+        $model = Payment::where('user_id', $user->id)->first();
         if (!empty($model)){
             $data['model'] = $model;
         }
         return view('student.payment.form', $data);
     }
 
-    public function store(PaymentRequest $request)
+    public function store(Request $request)
     {
-        if (!auth()->guard('web')->check()){return abort(403);}
-        
-        $payment = Payment::where('user_id', auth()->guard('web')->user()->id)->first();
-        
-        if (!empty($payment) && $payment->status === 1){
-            return redirect()->back()->with('error', 'pembayaran sudah terkonfirmasi');
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
         }
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
+        $payment = Payment::where('user_id', $user->id)->first();
 
-        if (!empty($payment) && $payment->status === 0){
-            $this->deleteFile($payment->img);
+        if (empty($payment)){
+            $request->validate([
+                'image' => 'required|mimes:png,jpg|max:2000'
+            ], [
+                'image.required' => 'bukti pembayaran wajib di isi',
+                'image.mimes' => 'bukti pembayaran harus jpg atau png',
+                'image.max' => 'bukti pembayaran makximal 2 MB',
+            ]);
+        }
+        
+        if (!empty($payment)){
+            $request->validate([
+                'image' => 'nullable|mimes:png,jpg|max:2000'
+            ], [
+                'image.required' => 'bukti pembayaran wajib di isi',
+                'image.mimes' => 'bukti pembayaran harus jpg atau png',
+                'image.max' => 'bukti pembayaran makximal 2 MB',
+            ]);
+        }        
+        
+        
+       if (!empty($request->file('image'))){
+            if (!empty($payment) && $payment->status === 1){
+                return redirect()->back()->with('error', 'pembayaran sudah terkonfirmasi');
+            }
+
+            if (!empty($payment) && $payment->status === 0){
+                $this->deleteFile($payment->img);
+                $request['img']     = $this->uploadFile($request->file('image'));
+                $payment->update($request->all());
+                return redirect()->route('student-profile.index', $ticket)->with('success', 'berhasil di perbarui');
+            }
+            
+            
             $request['img']     = $this->uploadFile($request->file('image'));
-            $payment->update($request->all());
-            return redirect()->back()->with('error', 'berhasil di perbarui');
+            $request['status']  = 0;
+            $request['user_id'] = $user->id;
+
+            
+            Payment::create($request->all());
         }
-        
-        $request['img']     = $this->uploadFile($request->file('image'));
-        $request['status']  = 0;
-        $request['user_id'] = auth()->guard('web')->user()->id;
-
-
-        Payment::create($request->all());
-
 
         // $admins = Admin::all();
 
@@ -55,7 +94,7 @@ class PaymentController extends Controller
         //     Mail::to($admin->email)->send(new PaymentMail);
         // }
 
-        return redirect()->route('payment-redirect')->with('success', 'berhasil mengungah bukti pembayaran');
+        return redirect()->route('student-profile.index', $ticket)->with('success', 'berhasil mengungah bukti pembayaran');
     }
 
     public function update(Request $request)

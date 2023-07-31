@@ -1,11 +1,11 @@
 @extends('student.layouts.app')
 
-@section('page-title')
+{{-- @section('page-title')
   <x-admin.page-title 
     title="Pembayaran" 
     previous="{{ true }}"  
   />
-@endsection
+@endsection --}}
 
 @section('content')
   <x-admin.card t md="8" lg="8">
@@ -17,9 +17,6 @@
     @endisset
     <form class="settings-form" method="POST" action="{{ $route }}" enctype="multipart/form-data">
       @csrf
-      @isset($model)
-        @method('PUT')
-      @endisset
 
       <x-admin.input
         label="Bukti Pembayaran"
@@ -28,7 +25,12 @@
         value="{{ $model->img ?? '' }}"
       />
 
-      <button type="submit" class="btn app-btn-primary" >Upload Bukti Pembayaran</button>
+      <div class="d-flex justify-content-between">
+        <a href="{{ route('student-qurban-saving.create', ['ticket' => request()->ticket]) }}" class="btn btn-warning">Kembali ke halam sebelunya </a>
+        {{-- <button type="submit" class="btn btn-info" >Simpan dan lanjut Mengisi Biodata Orangtua</button> --}}
+        <button type="submit" class="btn btn-info" >Upload bukti pembayaran dan selesaikan proses pendaftaran</button>
+      </div>
+
     </form>
   </x-admin.card>
 @endsection

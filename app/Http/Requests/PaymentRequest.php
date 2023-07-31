@@ -13,7 +13,8 @@ class PaymentRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->guard('web')->check();
+        // return auth()->guard('web')->check();
+        return true;
     }
 
     /**

@@ -27,6 +27,7 @@
         <img src="{{ asset($model->image) ?? '' }}" alt="foto_profil" width="150px">
       </div>
     </div>
+    
     {{-- <div class="mb-2"><strong>Status:</strong> <span class="badge bg-success">Active</span></div> --}}
     {{-- <div class="row justify-content-between">
       <div class="col-auto">

@@ -13,7 +13,8 @@ class DocRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->guard('web')->check();
+        // return true;
+        return true;
     }
 
     /**

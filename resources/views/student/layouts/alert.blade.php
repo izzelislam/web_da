@@ -11,7 +11,7 @@
 </svg>
 
 @if (session('success'))
-  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+  <div class="alert alert-success alert-dismissible fade show d-flex align-items-center col-12 col-md-8 col-lg-8" role="alert">
     <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
     <b>
       {{ session('success') }}
@@ -21,7 +21,7 @@
 @endif
 
 @if (session('error'))
-<div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+<div class="alert alert-danger alert-dismissible fade show d-flex align-items-center  col-12 col-md-8 col-lg-8" role="alert">
   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
   <b>
     {{ session('error') }}

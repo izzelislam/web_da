@@ -1,11 +1,11 @@
 @extends('student.layouts.app')
 
-@section('page-title')
+{{-- @section('page-title')
   <x-admin.page-title 
     title="Dakumen" 
     previous="{{ true }}"  
   />
-@endsection
+@endsection --}}
 
 @section('content')
 <div class="row">
@@ -37,7 +37,11 @@
         value="{{ $model->family_card ?? '' }}"
       />
 
-      <button type="submit" class="btn app-btn-primary" >Save Changes</button>
+      <div class="d-flex justify-content-between">
+        <a href="{{ route('student-parent.create', ['ticket' => request()->ticket]) }}" class="btn btn-warning">Kembali ke halam sebelunya </a>
+        {{-- <button type="submit" class="btn btn-info" >Simpan dan lanjut Mengisi Biodata Orangtua</button> --}}
+        <button type="submit" class="btn btn-info" >Simpan dan lanjut mengisi data nasabah qurban</button>
+      </div>
     </form>
   </x-admin.card>
   @isset($model)

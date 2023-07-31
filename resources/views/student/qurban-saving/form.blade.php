@@ -1,11 +1,11 @@
 @extends('student.layouts.app')
 
-@section('page-title')
+{{-- @section('page-title')
   <x-admin.page-title 
     title="Formulir akad tabungan hewan qurban" 
     previous="{{ true }}"  
   />
-@endsection
+@endsection --}}
 
 @section('content')
   <x-admin.card md="8" lg="8">
@@ -150,10 +150,11 @@
         </label>
       </div>
       
-      <button type="submit" formaction="{{ $route }}" class="btn app-btn-primary" >Simpan data</button>
-      @if (!empty($model))
-        <a href="{{ route('payment.index') }}"  class="btn text-white btn-info" >Lanjut ke pembayaran</a>
-      @endif
+      <div class="d-flex justify-content-between">
+        <a href="{{ route('student-parent.create', ['ticket' => request()->ticket]) }}" class="btn btn-warning">Kembali ke halam sebelunya </a>
+        {{-- <button type="submit" class="btn btn-info" >Simpan dan lanjut Mengisi Biodata Orangtua</button> --}}
+        <button type="submit" formaction="{{ $route }}" class="btn btn-primary" >Simpan dan lanjut ke pembayaran</button>
+      </div>
     </form>
   </x-admin.card>
 @endsection

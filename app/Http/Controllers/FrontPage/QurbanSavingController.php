@@ -4,20 +4,29 @@ namespace App\Http\Controllers\FrontPage;
 
 use App\Http\Controllers\Controller;
 use App\Models\QurbanSaving;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class QurbanSavingController extends Controller
 {
     public function create()
     {
-        if (!auth()->guard('web')->check()){return abort(403);}
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
 
-        $data['route'] = route('qurban-saving.store');
-        $model = QurbanSaving::where('user_id', auth()->user()->id)->first();
+        $data['route'] = route('student-qurban-saving.store', $ticket);
+        $model = QurbanSaving::where('user_id', $user->id)->first();
 
         if (!empty($model)){
             $data['model'] = $model;
-            $data['route'] = route('qurban-saving.update');
+            $data['route'] = route('student-qurban-saving.update',$ticket);
         }
         
         return view('student.qurban-saving.form', $data);
@@ -25,7 +34,14 @@ class QurbanSavingController extends Controller
 
     public function store(Request $request)
     {
-        if (!auth()->guard('web')->check()){return abort(403);}
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
 
         $request->validate([
             'is_accept' => 'required',
@@ -37,7 +53,7 @@ class QurbanSavingController extends Controller
             'qurban_type.required' => 'wajib di isi',
         ]);
 
-        $request['user_id'] = auth()->user()->id;
+        $request['user_id'] = $user->id;
         
         if ($request->month_12){
             $request['instalment'] = "Cicilan 12 Bulan Tipe ".$request->month_12; 
@@ -52,12 +68,20 @@ class QurbanSavingController extends Controller
 
         QurbanSaving::create($request->all());
         
-        return redirect()->back()->with('success', 'berhasil menambahkan data');
+        return redirect()->route('student-payment.index', $ticket)->with('success', 'berhasil menambahkan data');
     }
 
     public function update(Request $request)
     {
-        if (!auth()->guard('web')->check()){return abort(403);}
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
+
 
         $request->validate([
             'is_accept' => 'required',
@@ -69,7 +93,7 @@ class QurbanSavingController extends Controller
             'qurban_type.required' => 'wajib di isi',
         ]);
 
-        $request['user_id'] = auth()->user()->id;
+        $request['user_id'] = $user->id;
         
         if ($request->month_12){
             $request['instalment'] = "Cicilan 12 Bulan Tipe ".$request->month_12; 
@@ -82,9 +106,9 @@ class QurbanSavingController extends Controller
             $request['instalment'] = "Cicilan 36 Bulan Tipe ".$request->month_36; 
         }
 
-        $model = QurbanSaving::where('user_id', auth()->user()->id)->first();
+        $model = QurbanSaving::where('user_id', $user->id)->first();
         $model->update($request->all());    
 
-        return redirect()->back()->with('success', 'berhasil update biodata');
+        return redirect()->route('student-payment.index', $ticket)->with('success', 'berhasil update biodata');
     }
 }

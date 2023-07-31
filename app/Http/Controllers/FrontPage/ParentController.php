@@ -9,22 +9,31 @@ use App\Http\Requests\ParentRequest;
 use App\Models\Father;
 use App\Models\Mother;
 use App\Models\Ortu;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ParentController extends Controller
 {
     public function create()
     {
-        if (!auth()->guard('web')->check()){return abort(403);}
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
 
-        $data['parent_route'] = route('student-parent.store');
+        $data['parent_route'] = route('student-parent.store', $ticket);
         
-        $model = Ortu::where('user_id', auth()->user()->id)->first();
+
+        $model = Ortu::where('user_id', $user->id)->first();
         
         if (!empty($model)){
             $data['model']  = $model;
-            // dd($model);
-            $data['parent_route'] = route('student-parent.update');
+            $data['parent_route'] = route('student-parent.update', $ticket);
         }
 
         return view('student.parent.form', $data);
@@ -32,26 +41,44 @@ class ParentController extends Controller
 
     public function store(ParentRequest $request)
     {
-        if (!auth()->guard('web')->check()){return abort(403);}
+
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
 
         $validated = $request->validated();
-        $validated['user_id'] = auth()->user()->id;
+        $validated['user_id'] = $user->id;
         Ortu::create($validated);
 
-        return redirect()->route('qurban-saving.create')->with('success', 'berhasil menyimpan data orangtua ');
+        return redirect()->route('student-qurban-saving.create', $ticket)->with('success', 'berhasil menyimpan data orangtua ');
     }
 
-    public function update(FatherRequest $request)
+    public function update(ParentRequest $request)
     {
-        if (!auth()->guard('web')->check()){return abort(403);}
+
+        $ticket = request()->ticket;
+        if (empty($ticket)){
+            return redirect()->back()->with('error', 'url salah');
+        }
+
+        $user = User::where('nik', Crypt::decryptString($ticket))->first();
+        if (empty($user) ){
+            return redirect()->back()->with('error', 'url salah');
+        }
 
         $validated = $request->validated();
 
-        $parent = Ortu::where('user_id', auth()->user()->id)->first();
+        $parent = Ortu::where('user_id', $user->id)->first();
         if (!$parent){return abort(404);}
 
         $parent->update($validated);
-        return redirect()->back()->with('success', 'berhasil update data');
+        return redirect()->route('student-qurban-saving.create', $ticket)->with('success', 'berhasil update data');
     }
     
     public function paramFilter($params, $prefix, $num = 7)

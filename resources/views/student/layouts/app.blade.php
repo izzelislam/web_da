@@ -5,14 +5,20 @@
     <style>
       [x-cloak] { display: none !important; }
     </style>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="https://demos.creative-tim.com/soft-ui-design-system/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="https://demos.creative-tim.com/soft-ui-design-system/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('frontpage/assets/css/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontpage/assets/css/loopple/loopple.css') }}">
     @stack('addon-style')
     @livewireStyles
     @powerGridStyles
 </head> 
 
 <body class="app">   	
-    @include('student.layouts.header')
-    
+    {{-- @include('student.layouts.header') --}}
+@include('main.pages.parts.header')
     <div class="app-wrapper">
       <div class="app-content pt-3 p-md-3 p-lg-4">
         <div class="container-xl">
@@ -25,7 +31,7 @@
     </div>    					
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -49,7 +55,7 @@
           </form>
         </div>
       </div>
-    </div>
+    </div> --}}
 
     @include('student.layouts.script')
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
